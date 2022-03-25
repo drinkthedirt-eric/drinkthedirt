@@ -1,26 +1,37 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Outlet, Route } from "react-router-dom";
+import Header from './header/Header'
+import HomePage from './home/HomePage'
+import CoffeesPage from './coffees/CoffeesPage'
+import BrewingPage from './brewing/BrewingPage'
+import TastingsPage from './tastings/TastingsPage'
+import AboutPage from './about/AboutPage'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="coffees" element={<CoffeesPage />} />
+          <Route path="brewing" element={<BrewingPage />} />
+          <Route path="tastings" element={<TastingsPage />} />
+          <Route path="about" element={<AboutPage />} />
+        </Route>
+      </Routes>
+    </Router>
   );
+}
+
+function Layout() {
+  return (
+    <div>
+      <Header />
+      <Outlet />
+    </div>
+  )
 }
 
 export default App;
