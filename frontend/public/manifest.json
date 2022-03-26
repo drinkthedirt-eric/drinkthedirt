@@ -1,0 +1,10 @@
+{
+  "short_name": "Drink the Dirt",
+  "name": "Drink the Dirt",
+  "icons": [
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
