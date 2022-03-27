@@ -3,7 +3,7 @@ import { buildSchema } from "type-graphql";
 import * as path from "path";
 import { createServer } from "@graphql-yoga/node";
 
-import { CoffeeResolver } from "./coffee-resolver";
+import { CoffeeResolver } from "./resolvers/coffee-resolver";
 
 async function main() {
   const schema = await buildSchema({

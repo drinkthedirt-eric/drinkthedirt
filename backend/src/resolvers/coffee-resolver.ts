@@ -8,7 +8,7 @@ import {
   Int,
   ResolverInterface,
 } from 'type-graphql';
-import Coffee from './coffee';
+import Coffee from '../model/coffee';
 
 @Resolver(Coffee)
 export class CoffeeResolver  {
