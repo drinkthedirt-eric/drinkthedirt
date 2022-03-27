@@ -12,7 +12,7 @@ async function main() {
       emitSchemaFile: path.resolve(__dirname, "schema.gql"),
   });
 
-  const server = createServer({ schema });
+  const server = createServer({ schema });  
   await server.start();
 }
 
