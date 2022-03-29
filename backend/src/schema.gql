@@ -3,11 +3,370 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+type AffectedRowsOutput {
+  count: Int!
+}
+
+type AggregateCoffee {
+  _avg: CoffeeAvgAggregate
+  _count: CoffeeCountAggregate
+  _max: CoffeeMaxAggregate
+  _min: CoffeeMinAggregate
+  _sum: CoffeeSumAggregate
+}
+
 type Coffee {
-  id: ID!
+  createdAt: Timestamp!
+  id: Int!
   name: String!
 }
 
-type Query {
-  coffee: Coffee
+type CoffeeAvgAggregate {
+  id: Float
 }
+
+input CoffeeAvgOrderByAggregateInput {
+  id: SortOrder
+}
+
+type CoffeeCountAggregate {
+  _all: Int!
+  createdAt: Int!
+  id: Int!
+  name: Int!
+}
+
+input CoffeeCountOrderByAggregateInput {
+  createdAt: SortOrder
+  id: SortOrder
+  name: SortOrder
+}
+
+input CoffeeCreateInput {
+  createdAt: Timestamp
+  name: String!
+}
+
+input CoffeeCreateManyInput {
+  createdAt: Timestamp
+  id: Int
+  name: String!
+}
+
+type CoffeeGroupBy {
+  _avg: CoffeeAvgAggregate
+  _count: CoffeeCountAggregate
+  _max: CoffeeMaxAggregate
+  _min: CoffeeMinAggregate
+  _sum: CoffeeSumAggregate
+  createdAt: Timestamp!
+  id: Int!
+  name: String!
+}
+
+type CoffeeMaxAggregate {
+  createdAt: Timestamp
+  id: Int
+  name: String
+}
+
+input CoffeeMaxOrderByAggregateInput {
+  createdAt: SortOrder
+  id: SortOrder
+  name: SortOrder
+}
+
+type CoffeeMinAggregate {
+  createdAt: Timestamp
+  id: Int
+  name: String
+}
+
+input CoffeeMinOrderByAggregateInput {
+  createdAt: SortOrder
+  id: SortOrder
+  name: SortOrder
+}
+
+input CoffeeOrderByWithAggregationInput {
+  _avg: CoffeeAvgOrderByAggregateInput
+  _count: CoffeeCountOrderByAggregateInput
+  _max: CoffeeMaxOrderByAggregateInput
+  _min: CoffeeMinOrderByAggregateInput
+  _sum: CoffeeSumOrderByAggregateInput
+  createdAt: SortOrder
+  id: SortOrder
+  name: SortOrder
+}
+
+input CoffeeOrderByWithRelationInput {
+  createdAt: SortOrder
+  id: SortOrder
+  name: SortOrder
+}
+
+enum CoffeeScalarFieldEnum {
+  createdAt
+  id
+  name
+}
+
+input CoffeeScalarWhereWithAggregatesInput {
+  AND: [CoffeeScalarWhereWithAggregatesInput!]
+  NOT: [CoffeeScalarWhereWithAggregatesInput!]
+  OR: [CoffeeScalarWhereWithAggregatesInput!]
+  createdAt: DateTimeWithAggregatesFilter
+  id: IntWithAggregatesFilter
+  name: StringWithAggregatesFilter
+}
+
+type CoffeeSumAggregate {
+  id: Int
+}
+
+input CoffeeSumOrderByAggregateInput {
+  id: SortOrder
+}
+
+input CoffeeUpdateInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+}
+
+input CoffeeUpdateManyMutationInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+}
+
+input CoffeeWhereInput {
+  AND: [CoffeeWhereInput!]
+  NOT: [CoffeeWhereInput!]
+  OR: [CoffeeWhereInput!]
+  createdAt: DateTimeFilter
+  id: IntFilter
+  name: StringFilter
+}
+
+input CoffeeWhereUniqueInput {
+  id: Int
+}
+
+input DateTimeFieldUpdateOperationsInput {
+  set: Timestamp
+}
+
+input DateTimeFilter {
+  equals: Timestamp
+  gt: Timestamp
+  gte: Timestamp
+  in: [Timestamp!]
+  lt: Timestamp
+  lte: Timestamp
+  not: NestedDateTimeFilter
+  notIn: [Timestamp!]
+}
+
+input DateTimeWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedDateTimeFilter
+  _min: NestedDateTimeFilter
+  equals: Timestamp
+  gt: Timestamp
+  gte: Timestamp
+  in: [Timestamp!]
+  lt: Timestamp
+  lte: Timestamp
+  not: NestedDateTimeWithAggregatesFilter
+  notIn: [Timestamp!]
+}
+
+input IntFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntFilter
+  notIn: [Int!]
+}
+
+input IntWithAggregatesFilter {
+  _avg: NestedFloatFilter
+  _count: NestedIntFilter
+  _max: NestedIntFilter
+  _min: NestedIntFilter
+  _sum: NestedIntFilter
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntWithAggregatesFilter
+  notIn: [Int!]
+}
+
+type Mutation {
+  createCoffee(data: CoffeeCreateInput!): Coffee!
+  createManyCoffee(data: [CoffeeCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+  deleteCoffee(where: CoffeeWhereUniqueInput!): Coffee
+  deleteManyCoffee(where: CoffeeWhereInput): AffectedRowsOutput!
+  updateCoffee(data: CoffeeUpdateInput!, where: CoffeeWhereUniqueInput!): Coffee
+  updateManyCoffee(data: CoffeeUpdateManyMutationInput!, where: CoffeeWhereInput): AffectedRowsOutput!
+  upsertCoffee(create: CoffeeCreateInput!, update: CoffeeUpdateInput!, where: CoffeeWhereUniqueInput!): Coffee!
+}
+
+input NestedDateTimeFilter {
+  equals: Timestamp
+  gt: Timestamp
+  gte: Timestamp
+  in: [Timestamp!]
+  lt: Timestamp
+  lte: Timestamp
+  not: NestedDateTimeFilter
+  notIn: [Timestamp!]
+}
+
+input NestedDateTimeWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedDateTimeFilter
+  _min: NestedDateTimeFilter
+  equals: Timestamp
+  gt: Timestamp
+  gte: Timestamp
+  in: [Timestamp!]
+  lt: Timestamp
+  lte: Timestamp
+  not: NestedDateTimeWithAggregatesFilter
+  notIn: [Timestamp!]
+}
+
+input NestedFloatFilter {
+  equals: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  lt: Float
+  lte: Float
+  not: NestedFloatFilter
+  notIn: [Float!]
+}
+
+input NestedIntFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntFilter
+  notIn: [Int!]
+}
+
+input NestedIntWithAggregatesFilter {
+  _avg: NestedFloatFilter
+  _count: NestedIntFilter
+  _max: NestedIntFilter
+  _min: NestedIntFilter
+  _sum: NestedIntFilter
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntWithAggregatesFilter
+  notIn: [Int!]
+}
+
+input NestedStringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: NestedStringFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input NestedStringWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedStringFilter
+  _min: NestedStringFilter
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: NestedStringWithAggregatesFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+type Query {
+  aggregateCoffee(cursor: CoffeeWhereUniqueInput, orderBy: [CoffeeOrderByWithRelationInput!], skip: Int, take: Int, where: CoffeeWhereInput): AggregateCoffee!
+  coffee(where: CoffeeWhereUniqueInput!): Coffee
+  coffees(cursor: CoffeeWhereUniqueInput, distinct: [CoffeeScalarFieldEnum!], orderBy: [CoffeeOrderByWithRelationInput!], skip: Int, take: Int, where: CoffeeWhereInput): [Coffee!]!
+  findFirstCoffee(cursor: CoffeeWhereUniqueInput, distinct: [CoffeeScalarFieldEnum!], orderBy: [CoffeeOrderByWithRelationInput!], skip: Int, take: Int, where: CoffeeWhereInput): Coffee
+  groupByCoffee(by: [CoffeeScalarFieldEnum!]!, having: CoffeeScalarWhereWithAggregatesInput, orderBy: [CoffeeOrderByWithAggregationInput!], skip: Int, take: Int, where: CoffeeWhereInput): [CoffeeGroupBy!]!
+}
+
+enum QueryMode {
+  default
+  insensitive
+}
+
+enum SortOrder {
+  asc
+  desc
+}
+
+input StringFieldUpdateOperationsInput {
+  set: String
+}
+
+input StringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: NestedStringFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedStringFilter
+  _min: NestedStringFilter
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: NestedStringWithAggregatesFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+"""
+The javascript `Date` as integer. Type represents date and time as number of milliseconds from start of UNIX epoch.
+"""
+scalar Timestamp
