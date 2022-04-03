@@ -4,13 +4,12 @@ import App from "./App";
 import {
   ApolloClient,
   InMemoryCache,
-  ApolloProvider,
-  useQuery,
-  gql
+  ApolloProvider
 } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: "http://localhost:4000",
+  // uri: "http://drinkthedirt-backend-alb-2115029558.us-west-2.elb.amazonaws.com/graphql",
+  uri: "http://localhost:4000/graphql",
   cache: new InMemoryCache()
 });
 

@@ -4,7 +4,7 @@ import { useQuery, gql } from "@apollo/client";
 
 const DEMO_COFFEE = gql`
   query {
-    coffee {
+    coffee(where:{id:1}) {
       id
       name
     }
