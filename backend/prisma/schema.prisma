@@ -14,8 +14,33 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Roaster {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  name String
+  description String?
+  link String?
+  coffees Coffee[]
+  logoPhoto Json
+}
+
 model Coffee {
   id Int @id @default(autoincrement())
   createdAt DateTime @default(now())
   name String
+  photos Json
+  roasterId Int
+  roaster Roaster @relation(fields: [roasterId], references: [id])
+  country String
+  location String? // can include region, city, etc. comma-delimited.
+  producer String
+  varietals String[]
+  process String
+  roasterTastingNotes String[]
+
+  flavorCategories String[]
+  sweetness String
+  body String
+  acidity String
+  ourTastingNotes String[]
 }
