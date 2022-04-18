@@ -1,10 +1,16 @@
-import React from 'react';
-import Container from 'react-bootstrap/Container'
+import ListGroup from "react-bootstrap/ListGroup";
+import PageSpinner from "../components/PageSpinner";
+import PageContainer from "../components/PageContainer";
 import { useQuery, gql } from "@apollo/client";
 
-const DEMO_COFFEE = gql`
+interface Coffee {
+  id: number,
+  name: string
+}
+
+const GET_COFFEES_LIST = gql`
   query {
-    coffee(where:{id:1}) {
+    coffees {
       id
       name
     }
@@ -12,24 +18,59 @@ const DEMO_COFFEE = gql`
 `;
 
 function CoffeesPage() {
-  const { loading, error, data } = useQuery(DEMO_COFFEE);
+  const { loading, error, data } = useQuery(GET_COFFEES_LIST);
+  const localCoffees: Coffee[] = [
+    {
+      id: 1,
+      name: "Something or other"
+    },
+    {
+      id: 2,
+      name: "Something or other 2"
+    }
+  ];
 
-  if (error) {
+  if (loading) {
     return (
-      <Container>
-        <p>ERROR</p>
-      </Container>
+      <PageContainer>
+        <PageSpinner />
+      </PageContainer>
     );
   }
 
+  if (error || data == null) {
+    return (
+      <PageContainer>
+        <p>ERROR</p>
+      </PageContainer>
+    );
+  }
+
+  // const coffeeListItems = data.coffees.map((coffee: Coffee) => coffeesListItem(coffee));
+  const coffeeListItems = localCoffees.map((coffee: Coffee) => coffeesListItem(coffee));
+
   return (
-    <Container>
-      <p>This page has lots of info about roasters and coffees.</p>
-      <p>
-        { data != null && data.coffee.name }
-      </p>
-    </Container>
+    <PageContainer>
+      <h2>Coffees</h2>
+      <p>Browse coffee reviews, recipes, and other information.</p>
+      <ListGroup>
+      { coffeeListItems }
+      </ListGroup>
+    </PageContainer>
   );
+}
+
+function coffeesListItem(coffee: Coffee) {
+  return (
+      <ListGroup.Item key={coffee.id}>
+        <div>
+          <h4>{coffee.name}</h4>
+          <p>
+            <p>Lorem Ipsum I like Coffees</p>
+          </p>
+        </div>
+      </ListGroup.Item>
+  )
 }
 
 export default CoffeesPage;
