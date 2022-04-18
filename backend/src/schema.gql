@@ -15,42 +15,190 @@ type AggregateCoffee {
   _sum: CoffeeSumAggregate
 }
 
+type AggregateRoaster {
+  _avg: RoasterAvgAggregate
+  _count: RoasterCountAggregate
+  _max: RoasterMaxAggregate
+  _min: RoasterMinAggregate
+  _sum: RoasterSumAggregate
+}
+
 type Coffee {
+  acidity: FlavorProfileLevel!
+  body: FlavorProfileLevel!
+  country: String!
   createdAt: Timestamp!
+  flavorCategories: [FlavorCategory!]!
   id: Int!
+  location: String
   name: String!
+  ourTastingNotes: [String!]!
+  photos: [JSON!]!
+  process: String!
+  producer: String!
+  roaster: Roaster!
+  roasterId: Int!
+  roasterTastingNotes: [String!]!
+  sweetness: FlavorProfileLevel!
+  varietals: [String!]!
 }
 
 type CoffeeAvgAggregate {
   id: Float
+  roasterId: Float
 }
 
 input CoffeeAvgOrderByAggregateInput {
   id: SortOrder
+  roasterId: SortOrder
 }
 
 type CoffeeCountAggregate {
   _all: Int!
+  acidity: Int!
+  body: Int!
+  country: Int!
   createdAt: Int!
+  flavorCategories: Int!
   id: Int!
+  location: Int!
   name: Int!
+  ourTastingNotes: Int!
+  photos: Int!
+  process: Int!
+  producer: Int!
+  roasterId: Int!
+  roasterTastingNotes: Int!
+  sweetness: Int!
+  varietals: Int!
 }
 
 input CoffeeCountOrderByAggregateInput {
+  acidity: SortOrder
+  body: SortOrder
+  country: SortOrder
   createdAt: SortOrder
+  flavorCategories: SortOrder
   id: SortOrder
+  location: SortOrder
   name: SortOrder
+  ourTastingNotes: SortOrder
+  photos: SortOrder
+  process: SortOrder
+  producer: SortOrder
+  roasterId: SortOrder
+  roasterTastingNotes: SortOrder
+  sweetness: SortOrder
+  varietals: SortOrder
 }
 
 input CoffeeCreateInput {
+  acidity: FlavorProfileLevel!
+  body: FlavorProfileLevel!
+  country: String!
   createdAt: Timestamp
+  flavorCategories: CoffeeCreateflavorCategoriesInput
+  location: String
   name: String!
+  ourTastingNotes: CoffeeCreateourTastingNotesInput
+  photos: CoffeeCreatephotosInput
+  process: String!
+  producer: String!
+  roaster: RoasterCreateNestedOneWithoutCoffeesInput!
+  roasterTastingNotes: CoffeeCreateroasterTastingNotesInput
+  sweetness: FlavorProfileLevel!
+  varietals: CoffeeCreatevarietalsInput
 }
 
 input CoffeeCreateManyInput {
+  acidity: FlavorProfileLevel!
+  body: FlavorProfileLevel!
+  country: String!
   createdAt: Timestamp
+  flavorCategories: CoffeeCreateflavorCategoriesInput
   id: Int
+  location: String
   name: String!
+  ourTastingNotes: CoffeeCreateourTastingNotesInput
+  photos: CoffeeCreatephotosInput
+  process: String!
+  producer: String!
+  roasterId: Int!
+  roasterTastingNotes: CoffeeCreateroasterTastingNotesInput
+  sweetness: FlavorProfileLevel!
+  varietals: CoffeeCreatevarietalsInput
+}
+
+input CoffeeCreateManyRoasterInput {
+  acidity: FlavorProfileLevel!
+  body: FlavorProfileLevel!
+  country: String!
+  createdAt: Timestamp
+  flavorCategories: CoffeeCreateflavorCategoriesInput
+  id: Int
+  location: String
+  name: String!
+  ourTastingNotes: CoffeeCreateourTastingNotesInput
+  photos: CoffeeCreatephotosInput
+  process: String!
+  producer: String!
+  roasterTastingNotes: CoffeeCreateroasterTastingNotesInput
+  sweetness: FlavorProfileLevel!
+  varietals: CoffeeCreatevarietalsInput
+}
+
+input CoffeeCreateManyRoasterInputEnvelope {
+  data: [CoffeeCreateManyRoasterInput!]!
+  skipDuplicates: Boolean
+}
+
+input CoffeeCreateNestedManyWithoutRoasterInput {
+  connect: [CoffeeWhereUniqueInput!]
+  connectOrCreate: [CoffeeCreateOrConnectWithoutRoasterInput!]
+  create: [CoffeeCreateWithoutRoasterInput!]
+  createMany: CoffeeCreateManyRoasterInputEnvelope
+}
+
+input CoffeeCreateOrConnectWithoutRoasterInput {
+  create: CoffeeCreateWithoutRoasterInput!
+  where: CoffeeWhereUniqueInput!
+}
+
+input CoffeeCreateWithoutRoasterInput {
+  acidity: FlavorProfileLevel!
+  body: FlavorProfileLevel!
+  country: String!
+  createdAt: Timestamp
+  flavorCategories: CoffeeCreateflavorCategoriesInput
+  location: String
+  name: String!
+  ourTastingNotes: CoffeeCreateourTastingNotesInput
+  photos: CoffeeCreatephotosInput
+  process: String!
+  producer: String!
+  roasterTastingNotes: CoffeeCreateroasterTastingNotesInput
+  sweetness: FlavorProfileLevel!
+  varietals: CoffeeCreatevarietalsInput
+}
+
+input CoffeeCreateflavorCategoriesInput {
+  set: [FlavorCategory!]!
+}
+
+input CoffeeCreateourTastingNotesInput {
+  set: [String!]!
+}
+
+input CoffeeCreatephotosInput {
+  set: [JSON!]!
+}
+
+input CoffeeCreateroasterTastingNotesInput {
+  set: [String!]!
+}
+
+input CoffeeCreatevarietalsInput {
+  set: [String!]!
 }
 
 type CoffeeGroupBy {
@@ -59,33 +207,88 @@ type CoffeeGroupBy {
   _max: CoffeeMaxAggregate
   _min: CoffeeMinAggregate
   _sum: CoffeeSumAggregate
+  acidity: FlavorProfileLevel!
+  body: FlavorProfileLevel!
+  country: String!
   createdAt: Timestamp!
+  flavorCategories: [FlavorCategory!]
   id: Int!
+  location: String
   name: String!
+  ourTastingNotes: [String!]
+  photos: [JSON!]
+  process: String!
+  producer: String!
+  roasterId: Int!
+  roasterTastingNotes: [String!]
+  sweetness: FlavorProfileLevel!
+  varietals: [String!]
+}
+
+input CoffeeListRelationFilter {
+  every: CoffeeWhereInput
+  none: CoffeeWhereInput
+  some: CoffeeWhereInput
 }
 
 type CoffeeMaxAggregate {
+  acidity: FlavorProfileLevel
+  body: FlavorProfileLevel
+  country: String
   createdAt: Timestamp
   id: Int
+  location: String
   name: String
+  process: String
+  producer: String
+  roasterId: Int
+  sweetness: FlavorProfileLevel
 }
 
 input CoffeeMaxOrderByAggregateInput {
+  acidity: SortOrder
+  body: SortOrder
+  country: SortOrder
   createdAt: SortOrder
   id: SortOrder
+  location: SortOrder
   name: SortOrder
+  process: SortOrder
+  producer: SortOrder
+  roasterId: SortOrder
+  sweetness: SortOrder
 }
 
 type CoffeeMinAggregate {
+  acidity: FlavorProfileLevel
+  body: FlavorProfileLevel
+  country: String
   createdAt: Timestamp
   id: Int
+  location: String
   name: String
+  process: String
+  producer: String
+  roasterId: Int
+  sweetness: FlavorProfileLevel
 }
 
 input CoffeeMinOrderByAggregateInput {
+  acidity: SortOrder
+  body: SortOrder
+  country: SortOrder
   createdAt: SortOrder
   id: SortOrder
+  location: SortOrder
   name: SortOrder
+  process: SortOrder
+  producer: SortOrder
+  roasterId: SortOrder
+  sweetness: SortOrder
+}
+
+input CoffeeOrderByRelationAggregateInput {
+  _count: SortOrder
 }
 
 input CoffeeOrderByWithAggregationInput {
@@ -94,57 +297,245 @@ input CoffeeOrderByWithAggregationInput {
   _max: CoffeeMaxOrderByAggregateInput
   _min: CoffeeMinOrderByAggregateInput
   _sum: CoffeeSumOrderByAggregateInput
+  acidity: SortOrder
+  body: SortOrder
+  country: SortOrder
   createdAt: SortOrder
+  flavorCategories: SortOrder
   id: SortOrder
+  location: SortOrder
   name: SortOrder
+  ourTastingNotes: SortOrder
+  photos: SortOrder
+  process: SortOrder
+  producer: SortOrder
+  roasterId: SortOrder
+  roasterTastingNotes: SortOrder
+  sweetness: SortOrder
+  varietals: SortOrder
 }
 
 input CoffeeOrderByWithRelationInput {
+  acidity: SortOrder
+  body: SortOrder
+  country: SortOrder
   createdAt: SortOrder
+  flavorCategories: SortOrder
   id: SortOrder
+  location: SortOrder
   name: SortOrder
+  ourTastingNotes: SortOrder
+  photos: SortOrder
+  process: SortOrder
+  producer: SortOrder
+  roaster: RoasterOrderByWithRelationInput
+  roasterId: SortOrder
+  roasterTastingNotes: SortOrder
+  sweetness: SortOrder
+  varietals: SortOrder
 }
 
 enum CoffeeScalarFieldEnum {
+  acidity
+  body
+  country
   createdAt
+  flavorCategories
   id
+  location
   name
+  ourTastingNotes
+  photos
+  process
+  producer
+  roasterId
+  roasterTastingNotes
+  sweetness
+  varietals
+}
+
+input CoffeeScalarWhereInput {
+  AND: [CoffeeScalarWhereInput!]
+  NOT: [CoffeeScalarWhereInput!]
+  OR: [CoffeeScalarWhereInput!]
+  acidity: EnumFlavorProfileLevelFilter
+  body: EnumFlavorProfileLevelFilter
+  country: StringFilter
+  createdAt: DateTimeFilter
+  flavorCategories: EnumFlavorCategoryNullableListFilter
+  id: IntFilter
+  location: StringNullableFilter
+  name: StringFilter
+  ourTastingNotes: StringNullableListFilter
+  photos: JsonNullableListFilter
+  process: StringFilter
+  producer: StringFilter
+  roasterId: IntFilter
+  roasterTastingNotes: StringNullableListFilter
+  sweetness: EnumFlavorProfileLevelFilter
+  varietals: StringNullableListFilter
 }
 
 input CoffeeScalarWhereWithAggregatesInput {
   AND: [CoffeeScalarWhereWithAggregatesInput!]
   NOT: [CoffeeScalarWhereWithAggregatesInput!]
   OR: [CoffeeScalarWhereWithAggregatesInput!]
+  acidity: EnumFlavorProfileLevelWithAggregatesFilter
+  body: EnumFlavorProfileLevelWithAggregatesFilter
+  country: StringWithAggregatesFilter
   createdAt: DateTimeWithAggregatesFilter
+  flavorCategories: EnumFlavorCategoryNullableListFilter
   id: IntWithAggregatesFilter
+  location: StringNullableWithAggregatesFilter
   name: StringWithAggregatesFilter
+  ourTastingNotes: StringNullableListFilter
+  photos: JsonNullableListFilter
+  process: StringWithAggregatesFilter
+  producer: StringWithAggregatesFilter
+  roasterId: IntWithAggregatesFilter
+  roasterTastingNotes: StringNullableListFilter
+  sweetness: EnumFlavorProfileLevelWithAggregatesFilter
+  varietals: StringNullableListFilter
 }
 
 type CoffeeSumAggregate {
   id: Int
+  roasterId: Int
 }
 
 input CoffeeSumOrderByAggregateInput {
   id: SortOrder
+  roasterId: SortOrder
 }
 
 input CoffeeUpdateInput {
+  acidity: EnumFlavorProfileLevelFieldUpdateOperationsInput
+  body: EnumFlavorProfileLevelFieldUpdateOperationsInput
+  country: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  flavorCategories: CoffeeUpdateflavorCategoriesInput
+  location: NullableStringFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
+  ourTastingNotes: CoffeeUpdateourTastingNotesInput
+  photos: CoffeeUpdatephotosInput
+  process: StringFieldUpdateOperationsInput
+  producer: StringFieldUpdateOperationsInput
+  roaster: RoasterUpdateOneRequiredWithoutCoffeesInput
+  roasterTastingNotes: CoffeeUpdateroasterTastingNotesInput
+  sweetness: EnumFlavorProfileLevelFieldUpdateOperationsInput
+  varietals: CoffeeUpdatevarietalsInput
 }
 
 input CoffeeUpdateManyMutationInput {
+  acidity: EnumFlavorProfileLevelFieldUpdateOperationsInput
+  body: EnumFlavorProfileLevelFieldUpdateOperationsInput
+  country: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  flavorCategories: CoffeeUpdateflavorCategoriesInput
+  location: NullableStringFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
+  ourTastingNotes: CoffeeUpdateourTastingNotesInput
+  photos: CoffeeUpdatephotosInput
+  process: StringFieldUpdateOperationsInput
+  producer: StringFieldUpdateOperationsInput
+  roasterTastingNotes: CoffeeUpdateroasterTastingNotesInput
+  sweetness: EnumFlavorProfileLevelFieldUpdateOperationsInput
+  varietals: CoffeeUpdatevarietalsInput
+}
+
+input CoffeeUpdateManyWithWhereWithoutRoasterInput {
+  data: CoffeeUpdateManyMutationInput!
+  where: CoffeeScalarWhereInput!
+}
+
+input CoffeeUpdateManyWithoutRoasterInput {
+  connect: [CoffeeWhereUniqueInput!]
+  connectOrCreate: [CoffeeCreateOrConnectWithoutRoasterInput!]
+  create: [CoffeeCreateWithoutRoasterInput!]
+  createMany: CoffeeCreateManyRoasterInputEnvelope
+  delete: [CoffeeWhereUniqueInput!]
+  deleteMany: [CoffeeScalarWhereInput!]
+  disconnect: [CoffeeWhereUniqueInput!]
+  set: [CoffeeWhereUniqueInput!]
+  update: [CoffeeUpdateWithWhereUniqueWithoutRoasterInput!]
+  updateMany: [CoffeeUpdateManyWithWhereWithoutRoasterInput!]
+  upsert: [CoffeeUpsertWithWhereUniqueWithoutRoasterInput!]
+}
+
+input CoffeeUpdateWithWhereUniqueWithoutRoasterInput {
+  data: CoffeeUpdateWithoutRoasterInput!
+  where: CoffeeWhereUniqueInput!
+}
+
+input CoffeeUpdateWithoutRoasterInput {
+  acidity: EnumFlavorProfileLevelFieldUpdateOperationsInput
+  body: EnumFlavorProfileLevelFieldUpdateOperationsInput
+  country: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  flavorCategories: CoffeeUpdateflavorCategoriesInput
+  location: NullableStringFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  ourTastingNotes: CoffeeUpdateourTastingNotesInput
+  photos: CoffeeUpdatephotosInput
+  process: StringFieldUpdateOperationsInput
+  producer: StringFieldUpdateOperationsInput
+  roasterTastingNotes: CoffeeUpdateroasterTastingNotesInput
+  sweetness: EnumFlavorProfileLevelFieldUpdateOperationsInput
+  varietals: CoffeeUpdatevarietalsInput
+}
+
+input CoffeeUpdateflavorCategoriesInput {
+  push: [FlavorCategory!]
+  set: [FlavorCategory!]
+}
+
+input CoffeeUpdateourTastingNotesInput {
+  push: [String!]
+  set: [String!]
+}
+
+input CoffeeUpdatephotosInput {
+  push: [JSON!]
+  set: [JSON!]
+}
+
+input CoffeeUpdateroasterTastingNotesInput {
+  push: [String!]
+  set: [String!]
+}
+
+input CoffeeUpdatevarietalsInput {
+  push: [String!]
+  set: [String!]
+}
+
+input CoffeeUpsertWithWhereUniqueWithoutRoasterInput {
+  create: CoffeeCreateWithoutRoasterInput!
+  update: CoffeeUpdateWithoutRoasterInput!
+  where: CoffeeWhereUniqueInput!
 }
 
 input CoffeeWhereInput {
   AND: [CoffeeWhereInput!]
   NOT: [CoffeeWhereInput!]
   OR: [CoffeeWhereInput!]
+  acidity: EnumFlavorProfileLevelFilter
+  body: EnumFlavorProfileLevelFilter
+  country: StringFilter
   createdAt: DateTimeFilter
+  flavorCategories: EnumFlavorCategoryNullableListFilter
   id: IntFilter
+  location: StringNullableFilter
   name: StringFilter
+  ourTastingNotes: StringNullableListFilter
+  photos: JsonNullableListFilter
+  process: StringFilter
+  producer: StringFilter
+  roaster: RoasterRelationFilter
+  roasterId: IntFilter
+  roasterTastingNotes: StringNullableListFilter
+  sweetness: EnumFlavorProfileLevelFilter
+  varietals: StringNullableListFilter
 }
 
 input CoffeeWhereUniqueInput {
@@ -180,6 +571,51 @@ input DateTimeWithAggregatesFilter {
   notIn: [Timestamp!]
 }
 
+input EnumFlavorCategoryNullableListFilter {
+  equals: [FlavorCategory!]
+  has: FlavorCategory
+  hasEvery: [FlavorCategory!]
+  hasSome: [FlavorCategory!]
+  isEmpty: Boolean
+}
+
+input EnumFlavorProfileLevelFieldUpdateOperationsInput {
+  set: FlavorProfileLevel
+}
+
+input EnumFlavorProfileLevelFilter {
+  equals: FlavorProfileLevel
+  in: [FlavorProfileLevel!]
+  not: NestedEnumFlavorProfileLevelFilter
+  notIn: [FlavorProfileLevel!]
+}
+
+input EnumFlavorProfileLevelWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedEnumFlavorProfileLevelFilter
+  _min: NestedEnumFlavorProfileLevelFilter
+  equals: FlavorProfileLevel
+  in: [FlavorProfileLevel!]
+  not: NestedEnumFlavorProfileLevelWithAggregatesFilter
+  notIn: [FlavorProfileLevel!]
+}
+
+enum FlavorCategory {
+  Acidic
+  Candy
+  FerementationFunk
+  Floral
+  Fruity
+  NutsChocolate
+  Spices
+}
+
+enum FlavorProfileLevel {
+  High
+  Low
+  Medium
+}
+
 input IntFilter {
   equals: Int
   gt: Int
@@ -207,14 +643,47 @@ input IntWithAggregatesFilter {
   notIn: [Int!]
 }
 
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+input JsonFilter {
+  equals: JSON
+  not: JSON
+}
+
+input JsonNullableListFilter {
+  equals: [JSON!]
+  has: JSON
+  hasEvery: [JSON!]
+  hasSome: [JSON!]
+  isEmpty: Boolean
+}
+
+input JsonWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedJsonFilter
+  _min: NestedJsonFilter
+  equals: JSON
+  not: JSON
+}
+
 type Mutation {
   createCoffee(data: CoffeeCreateInput!): Coffee!
   createManyCoffee(data: [CoffeeCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+  createManyRoaster(data: [RoasterCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput!
+  createRoaster(data: RoasterCreateInput!): Roaster!
   deleteCoffee(where: CoffeeWhereUniqueInput!): Coffee
   deleteManyCoffee(where: CoffeeWhereInput): AffectedRowsOutput!
+  deleteManyRoaster(where: RoasterWhereInput): AffectedRowsOutput!
+  deleteRoaster(where: RoasterWhereUniqueInput!): Roaster
   updateCoffee(data: CoffeeUpdateInput!, where: CoffeeWhereUniqueInput!): Coffee
   updateManyCoffee(data: CoffeeUpdateManyMutationInput!, where: CoffeeWhereInput): AffectedRowsOutput!
+  updateManyRoaster(data: RoasterUpdateManyMutationInput!, where: RoasterWhereInput): AffectedRowsOutput!
+  updateRoaster(data: RoasterUpdateInput!, where: RoasterWhereUniqueInput!): Roaster
   upsertCoffee(create: CoffeeCreateInput!, update: CoffeeUpdateInput!, where: CoffeeWhereUniqueInput!): Coffee!
+  upsertRoaster(create: RoasterCreateInput!, update: RoasterUpdateInput!, where: RoasterWhereUniqueInput!): Roaster!
 }
 
 input NestedDateTimeFilter {
@@ -242,6 +711,23 @@ input NestedDateTimeWithAggregatesFilter {
   notIn: [Timestamp!]
 }
 
+input NestedEnumFlavorProfileLevelFilter {
+  equals: FlavorProfileLevel
+  in: [FlavorProfileLevel!]
+  not: NestedEnumFlavorProfileLevelFilter
+  notIn: [FlavorProfileLevel!]
+}
+
+input NestedEnumFlavorProfileLevelWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedEnumFlavorProfileLevelFilter
+  _min: NestedEnumFlavorProfileLevelFilter
+  equals: FlavorProfileLevel
+  in: [FlavorProfileLevel!]
+  not: NestedEnumFlavorProfileLevelWithAggregatesFilter
+  notIn: [FlavorProfileLevel!]
+}
+
 input NestedFloatFilter {
   equals: Float
   gt: Float
@@ -264,6 +750,17 @@ input NestedIntFilter {
   notIn: [Int!]
 }
 
+input NestedIntNullableFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntNullableFilter
+  notIn: [Int!]
+}
+
 input NestedIntWithAggregatesFilter {
   _avg: NestedFloatFilter
   _count: NestedIntFilter
@@ -280,6 +777,11 @@ input NestedIntWithAggregatesFilter {
   notIn: [Int!]
 }
 
+input NestedJsonFilter {
+  equals: JSON
+  not: JSON
+}
+
 input NestedStringFilter {
   contains: String
   endsWith: String
@@ -290,6 +792,37 @@ input NestedStringFilter {
   lt: String
   lte: String
   not: NestedStringFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input NestedStringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: NestedStringNullableFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input NestedStringNullableWithAggregatesFilter {
+  _count: NestedIntNullableFilter
+  _max: NestedStringNullableFilter
+  _min: NestedStringNullableFilter
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  not: NestedStringNullableWithAggregatesFilter
   notIn: [String!]
   startsWith: String
 }
@@ -311,17 +844,264 @@ input NestedStringWithAggregatesFilter {
   startsWith: String
 }
 
+input NullableStringFieldUpdateOperationsInput {
+  set: String
+}
+
 type Query {
   aggregateCoffee(cursor: CoffeeWhereUniqueInput, orderBy: [CoffeeOrderByWithRelationInput!], skip: Int, take: Int, where: CoffeeWhereInput): AggregateCoffee!
+  aggregateRoaster(cursor: RoasterWhereUniqueInput, orderBy: [RoasterOrderByWithRelationInput!], skip: Int, take: Int, where: RoasterWhereInput): AggregateRoaster!
   coffee(where: CoffeeWhereUniqueInput!): Coffee
   coffees(cursor: CoffeeWhereUniqueInput, distinct: [CoffeeScalarFieldEnum!], orderBy: [CoffeeOrderByWithRelationInput!], skip: Int, take: Int, where: CoffeeWhereInput): [Coffee!]!
   findFirstCoffee(cursor: CoffeeWhereUniqueInput, distinct: [CoffeeScalarFieldEnum!], orderBy: [CoffeeOrderByWithRelationInput!], skip: Int, take: Int, where: CoffeeWhereInput): Coffee
+  findFirstRoaster(cursor: RoasterWhereUniqueInput, distinct: [RoasterScalarFieldEnum!], orderBy: [RoasterOrderByWithRelationInput!], skip: Int, take: Int, where: RoasterWhereInput): Roaster
   groupByCoffee(by: [CoffeeScalarFieldEnum!]!, having: CoffeeScalarWhereWithAggregatesInput, orderBy: [CoffeeOrderByWithAggregationInput!], skip: Int, take: Int, where: CoffeeWhereInput): [CoffeeGroupBy!]!
+  groupByRoaster(by: [RoasterScalarFieldEnum!]!, having: RoasterScalarWhereWithAggregatesInput, orderBy: [RoasterOrderByWithAggregationInput!], skip: Int, take: Int, where: RoasterWhereInput): [RoasterGroupBy!]!
+  roaster(where: RoasterWhereUniqueInput!): Roaster
+  roasters(cursor: RoasterWhereUniqueInput, distinct: [RoasterScalarFieldEnum!], orderBy: [RoasterOrderByWithRelationInput!], skip: Int, take: Int, where: RoasterWhereInput): [Roaster!]!
 }
 
 enum QueryMode {
   default
   insensitive
+}
+
+type Roaster {
+  _count: RoasterCount
+  coffees(cursor: CoffeeWhereUniqueInput, distinct: [CoffeeScalarFieldEnum!], orderBy: [CoffeeOrderByWithRelationInput!], skip: Int, take: Int, where: CoffeeWhereInput): [Coffee!]!
+  createdAt: Timestamp!
+  description: String
+  id: Int!
+  link: String
+  logoPhoto: JSON!
+  name: String!
+}
+
+type RoasterAvgAggregate {
+  id: Float
+}
+
+input RoasterAvgOrderByAggregateInput {
+  id: SortOrder
+}
+
+type RoasterCount {
+  coffees: Int!
+}
+
+type RoasterCountAggregate {
+  _all: Int!
+  createdAt: Int!
+  description: Int!
+  id: Int!
+  link: Int!
+  logoPhoto: Int!
+  name: Int!
+}
+
+input RoasterCountOrderByAggregateInput {
+  createdAt: SortOrder
+  description: SortOrder
+  id: SortOrder
+  link: SortOrder
+  logoPhoto: SortOrder
+  name: SortOrder
+}
+
+input RoasterCreateInput {
+  coffees: CoffeeCreateNestedManyWithoutRoasterInput
+  createdAt: Timestamp
+  description: String
+  link: String
+  logoPhoto: JSON!
+  name: String!
+}
+
+input RoasterCreateManyInput {
+  createdAt: Timestamp
+  description: String
+  id: Int
+  link: String
+  logoPhoto: JSON!
+  name: String!
+}
+
+input RoasterCreateNestedOneWithoutCoffeesInput {
+  connect: RoasterWhereUniqueInput
+  connectOrCreate: RoasterCreateOrConnectWithoutCoffeesInput
+  create: RoasterCreateWithoutCoffeesInput
+}
+
+input RoasterCreateOrConnectWithoutCoffeesInput {
+  create: RoasterCreateWithoutCoffeesInput!
+  where: RoasterWhereUniqueInput!
+}
+
+input RoasterCreateWithoutCoffeesInput {
+  createdAt: Timestamp
+  description: String
+  link: String
+  logoPhoto: JSON!
+  name: String!
+}
+
+type RoasterGroupBy {
+  _avg: RoasterAvgAggregate
+  _count: RoasterCountAggregate
+  _max: RoasterMaxAggregate
+  _min: RoasterMinAggregate
+  _sum: RoasterSumAggregate
+  createdAt: Timestamp!
+  description: String
+  id: Int!
+  link: String
+  logoPhoto: JSON!
+  name: String!
+}
+
+type RoasterMaxAggregate {
+  createdAt: Timestamp
+  description: String
+  id: Int
+  link: String
+  name: String
+}
+
+input RoasterMaxOrderByAggregateInput {
+  createdAt: SortOrder
+  description: SortOrder
+  id: SortOrder
+  link: SortOrder
+  name: SortOrder
+}
+
+type RoasterMinAggregate {
+  createdAt: Timestamp
+  description: String
+  id: Int
+  link: String
+  name: String
+}
+
+input RoasterMinOrderByAggregateInput {
+  createdAt: SortOrder
+  description: SortOrder
+  id: SortOrder
+  link: SortOrder
+  name: SortOrder
+}
+
+input RoasterOrderByWithAggregationInput {
+  _avg: RoasterAvgOrderByAggregateInput
+  _count: RoasterCountOrderByAggregateInput
+  _max: RoasterMaxOrderByAggregateInput
+  _min: RoasterMinOrderByAggregateInput
+  _sum: RoasterSumOrderByAggregateInput
+  createdAt: SortOrder
+  description: SortOrder
+  id: SortOrder
+  link: SortOrder
+  logoPhoto: SortOrder
+  name: SortOrder
+}
+
+input RoasterOrderByWithRelationInput {
+  coffees: CoffeeOrderByRelationAggregateInput
+  createdAt: SortOrder
+  description: SortOrder
+  id: SortOrder
+  link: SortOrder
+  logoPhoto: SortOrder
+  name: SortOrder
+}
+
+input RoasterRelationFilter {
+  is: RoasterWhereInput
+  isNot: RoasterWhereInput
+}
+
+enum RoasterScalarFieldEnum {
+  createdAt
+  description
+  id
+  link
+  logoPhoto
+  name
+}
+
+input RoasterScalarWhereWithAggregatesInput {
+  AND: [RoasterScalarWhereWithAggregatesInput!]
+  NOT: [RoasterScalarWhereWithAggregatesInput!]
+  OR: [RoasterScalarWhereWithAggregatesInput!]
+  createdAt: DateTimeWithAggregatesFilter
+  description: StringNullableWithAggregatesFilter
+  id: IntWithAggregatesFilter
+  link: StringNullableWithAggregatesFilter
+  logoPhoto: JsonWithAggregatesFilter
+  name: StringWithAggregatesFilter
+}
+
+type RoasterSumAggregate {
+  id: Int
+}
+
+input RoasterSumOrderByAggregateInput {
+  id: SortOrder
+}
+
+input RoasterUpdateInput {
+  coffees: CoffeeUpdateManyWithoutRoasterInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+  link: NullableStringFieldUpdateOperationsInput
+  logoPhoto: JSON
+  name: StringFieldUpdateOperationsInput
+}
+
+input RoasterUpdateManyMutationInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+  link: NullableStringFieldUpdateOperationsInput
+  logoPhoto: JSON
+  name: StringFieldUpdateOperationsInput
+}
+
+input RoasterUpdateOneRequiredWithoutCoffeesInput {
+  connect: RoasterWhereUniqueInput
+  connectOrCreate: RoasterCreateOrConnectWithoutCoffeesInput
+  create: RoasterCreateWithoutCoffeesInput
+  update: RoasterUpdateWithoutCoffeesInput
+  upsert: RoasterUpsertWithoutCoffeesInput
+}
+
+input RoasterUpdateWithoutCoffeesInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  description: NullableStringFieldUpdateOperationsInput
+  link: NullableStringFieldUpdateOperationsInput
+  logoPhoto: JSON
+  name: StringFieldUpdateOperationsInput
+}
+
+input RoasterUpsertWithoutCoffeesInput {
+  create: RoasterCreateWithoutCoffeesInput!
+  update: RoasterUpdateWithoutCoffeesInput!
+}
+
+input RoasterWhereInput {
+  AND: [RoasterWhereInput!]
+  NOT: [RoasterWhereInput!]
+  OR: [RoasterWhereInput!]
+  coffees: CoffeeListRelationFilter
+  createdAt: DateTimeFilter
+  description: StringNullableFilter
+  id: IntFilter
+  link: StringNullableFilter
+  logoPhoto: JsonFilter
+  name: StringFilter
+}
+
+input RoasterWhereUniqueInput {
+  id: Int
 }
 
 enum SortOrder {
@@ -344,6 +1124,47 @@ input StringFilter {
   lte: String
   mode: QueryMode
   not: NestedStringFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: NestedStringNullableFilter
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringNullableListFilter {
+  equals: [String!]
+  has: String
+  hasEvery: [String!]
+  hasSome: [String!]
+  isEmpty: Boolean
+}
+
+input StringNullableWithAggregatesFilter {
+  _count: NestedIntNullableFilter
+  _max: NestedStringNullableFilter
+  _min: NestedStringNullableFilter
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: NestedStringNullableWithAggregatesFilter
   notIn: [String!]
   startsWith: String
 }
