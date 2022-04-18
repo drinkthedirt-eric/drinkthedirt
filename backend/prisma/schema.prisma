@@ -28,7 +28,7 @@ model Coffee {
   id Int @id @default(autoincrement())
   createdAt DateTime @default(now())
   name String
-  photos Json
+  photos Json[]
   roasterId Int
   roaster Roaster @relation(fields: [roasterId], references: [id])
   country String
@@ -38,9 +38,25 @@ model Coffee {
   process String
   roasterTastingNotes String[]
 
-  flavorCategories String[]
-  sweetness String
-  body String
-  acidity String
+  flavorCategories FlavorCategory[]
+  sweetness FlavorProfileLevel
+  body FlavorProfileLevel
+  acidity FlavorProfileLevel
   ourTastingNotes String[]
+}
+
+enum FlavorCategory {
+  Spices
+  NutsChocolate
+  Candy
+  Floral
+  Fruity
+  Acidic
+  FerementationFunk
+}
+
+enum FlavorProfileLevel {
+  Low
+  Medium
+  High
 }
