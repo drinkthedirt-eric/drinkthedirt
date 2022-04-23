@@ -25,6 +25,8 @@
   },
   "type": "module",
   "dependencies": {
+    "@apollo/client": "^3.5.9",
+		"graphql": "^15.8.0",
     "daisyui": "^2.14.2"
   }
 }
