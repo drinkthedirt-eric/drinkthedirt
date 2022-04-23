@@ -31,7 +31,7 @@
     <div class="hidden lg:flex navbar-center">
         <ul class="menu menu-horizontal p-0">
             <li><a href="/">Home</a></li>
-            <li><a href="/coffees">Coffees</a></li>
+            <li><a href="/coffee">Coffee</a></li>
             <li><a href="/brewing">Brewing</a></li>
             <li><a href="/classes">Tastings & Classes</a></li>
             <li><a href="/community">Community</a></li>
