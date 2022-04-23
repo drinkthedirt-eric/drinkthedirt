@@ -1,1 +1,0 @@
-<p>This is the page for an individual coffee.</p>
