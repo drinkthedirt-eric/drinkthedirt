@@ -44,4 +44,6 @@
     </div>
 </div>
 
-<slot></slot>
+<div class="prose">
+    <slot></slot>
+</div>
