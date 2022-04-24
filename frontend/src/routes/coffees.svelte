@@ -22,8 +22,12 @@
     const coffees = query(GET_COFFEES_QUERY);
 </script>
 
-<div class="font-bold text-4xl">Coffees!</div>
-<div>Browse coffee reviews, recipes, and tasting notes.</div>
+
+<div class="grid justify-items-center">
+    <div class="font-bold text-4xl">Coffees!</div>
+    <div>Browse coffee reviews, recipes, and tasting notes.</div>
+</div>
+
 {#if $coffees.loading}
     <h2>Loading...</h2>
 {:else if $coffees.error}
@@ -32,7 +36,7 @@
     <table class="table table-compact border hover:bg-base-200">
             {#each $coffees.data.coffees as coffee}
                 <tr>
-                    <a href="coffees/{coffee.id}">
+                    <a href="coffees/{coffee.id}" class="table-anchor">
                         <td class="w-20 align-top p-0">
                             <img src={sampleImage} alt={coffee.name} class="m-0"/>
                         </td>
@@ -44,13 +48,4 @@
                 </tr>
             {/each}
     </table>
-
 {/if}
-
-<!-- Destroying link styling here to make the table a link. -->
-<style>
-a {
-    display:block;
-    text-decoration: none;
-}
-</style>
