@@ -22,9 +22,7 @@
     const coffees = query(GET_COFFEES_QUERY);
 </script>
 
-
-
-<div class="font-bold text-4xl">Coffees!</div>
+<div class="font-bold text-4xl pb-2">Coffees!</div>
 <div>Browse coffee reviews, recipes, and tasting notes.</div>
 
 {#if $coffees.loading}
