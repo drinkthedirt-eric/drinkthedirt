@@ -33,12 +33,12 @@
             {#each $coffees.data.coffees as coffee}
                 <tr>
                     <a href="coffees/{coffee.id}">
-                        <td class="w-24">
-                            <img src={sampleImage} alt={coffee.name} />
+                        <td class="w-20 align-top p-0">
+                            <img src={sampleImage} alt={coffee.name} class="m-0"/>
                         </td>
-                        <td>
-                            <div class="font-bold">{coffee.roaster.name}</div>
-                            <div>{coffee.name}</div>
+                        <td class="align-top">
+                            <div class="font-light">{coffee.roaster.name}</div>
+                            <div class="font-thin text-2xl">{coffee.name}</div>
                         </td>
                     </a>
                 </tr>
