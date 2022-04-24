@@ -3,8 +3,8 @@
 </svelte:head>
 
 <script lang="ts">
-    import { gql } from "@apollo/client/core";
-    import { query } from "svelte-apollo";
+    import { gql } from "@apollo/client/core/index.js";
+    import { query } from "$lib/svelte-apollo-sad/svelte-apollo";
     import sampleImage from "./sample_coffee.png";
 
     const GET_COFFEES_QUERY = gql`

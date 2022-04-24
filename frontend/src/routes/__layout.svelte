@@ -3,8 +3,8 @@
 
 <script lang="ts">
     import "$lib/global.css";
-    import { ApolloClient, InMemoryCache } from "@apollo/client/core";
-    import { setClient } from "svelte-apollo";
+    import { ApolloClient, InMemoryCache } from "@apollo/client/core/index.js";
+    import { setClient } from "$lib/svelte-apollo-sad/svelte-apollo";
 
     // Global setup
     // TODO this brings in some weird react dependencies. Use @apollo/client/core for now.

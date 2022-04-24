@@ -1,7 +1,7 @@
 <script lang="ts">
     import { page } from "$app/stores";
-    import { gql } from "@apollo/client/core";
-    import { query } from "svelte-apollo";
+    import { gql } from "@apollo/client/core/index.js";
+    import { query } from "$lib/svelte-apollo-sad/svelte-apollo";;
     import CoffeeProperty from "../../lib/coffee_property.svelte";
     import sampleImage2 from "../sample_coffee_2.png";
     import sampleImage3 from "../sample_coffee_3.png";
