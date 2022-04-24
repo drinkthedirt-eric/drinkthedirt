@@ -1,6 +1,6 @@
 <script lang="ts">
     import CoffeeProperty from "../../lib/coffee_property.svelte";
-    //   import sampleImage from "./sample_coffee.png";
+    import sampleImage from "../sample_coffee.png";
 
     const roaster = {
         name: "Onda Origins",
@@ -27,35 +27,40 @@
 </script>
 
 <div class="flex justify-center">
-    <div class="card w-full max-w-7xl bg-base-200 px-4 py-4">
-        <div class="grid grid-cols-3 gap-4">
-            <div class="col-span-3 lg:col-span-1">
-                <div class="text-xl font-light leading-none">
-                    {coffee.roaster.name}
+    <div class="card card-compact lg:card-normal w-full max-w-7xl bg-base-200">
+        <figure class="my-0 bg-slate-100/90">
+            <img src={sampleImage} alt={coffee.name} class="m-0 h-96"/>
+        </figure>
+        <div class="card-body">
+            <div class="grid grid-cols-3 gap-4">
+                <div class="col-span-3 lg:col-span-1">
+                    <div class="text-xl font-light leading-none">
+                        {coffee.roaster.name}
+                    </div>
+                    <div class="text-3xl lg:text-4xl font-thin leading-none">
+                        {coffee.name}
+                    </div>
+                    <div class="mt-2 text-sm">
+                        <span>$18.00</span>
+                        <span class="font-extralight">- 12 oz / 340 g</span>
+                    </div>
                 </div>
-                <div class="text-3xl lg:text-4xl font-thin leading-none">
-                    {coffee.name}
+                <div class="col-span-3 lg:col-span-2">
+                    <CoffeeProperty type="origin"
+                        >{coffee.location}, {coffee.country}</CoffeeProperty
+                    >
+                    <CoffeeProperty type="producer"
+                        >{coffee.producer}</CoffeeProperty
+                    >
+                    <CoffeeProperty type="process">{coffee.process}</CoffeeProperty>
+                    <CoffeeProperty type="varietal"
+                        >{coffee.varietals.join(", ")}</CoffeeProperty
+                    >
+                    <CoffeeProperty type="from the roaster">
+                        <div>{coffee.roasterTastingNotes.join(", ")}</div>
+                        <div class="mt-2">{coffee.roasterDescription}</div>
+                    </CoffeeProperty>
                 </div>
-                <div class="mt-2 text-sm">
-                    <span>$18.00</span>
-                    <span class="font-extralight">- 12 oz / 340 g</span>
-                </div>
-            </div>
-            <div class="col-span-3 lg:col-span-2">
-                <CoffeeProperty type="origin"
-                    >{coffee.location}, {coffee.country}</CoffeeProperty
-                >
-                <CoffeeProperty type="producer"
-                    >{coffee.producer}</CoffeeProperty
-                >
-                <CoffeeProperty type="process">{coffee.process}</CoffeeProperty>
-                <CoffeeProperty type="varietal"
-                    >{coffee.varietals.join(", ")}</CoffeeProperty
-                >
-                <CoffeeProperty type="from the roaster">
-                    <div>{coffee.roasterTastingNotes.join(", ")}</div>
-                    <div class="mt-2">{coffee.roasterDescription}</div>
-                </CoffeeProperty>
             </div>
         </div>
     </div>
