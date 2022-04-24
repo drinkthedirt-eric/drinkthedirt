@@ -1,82 +1,106 @@
 <script lang="ts">
+    import { page } from "$app/stores";
+    import { gql } from "@apollo/client/core";
+    import { query } from "svelte-apollo";
     import CoffeeProperty from "../../lib/coffee_property.svelte";
     import sampleImage2 from "../sample_coffee_2.png";
     import sampleImage3 from "../sample_coffee_3.png";
 
-    const roaster = {
-        name: "Onda Origins",
-        link: "https://ondaorigins.com/",
-    };
-    const coffee = {
-        name: "Umoja / Congo",
-        roaster: roaster,
-        country: "Democratic Republic of Congo",
-        location: "Kalehe Territory, South Kivu Province",
-        producer:
-            "Solidarité Pour La Promotion des Actions Café et le Développement Intégral",
-        process: "Washed",
-        varietals: ["SL-34"],
-        roasterTastingNotes: ["kumquat", "white pepper", "cantaloupe"],
-        roasterDescription:
-            "This certified fairtrade and organic cooperative provides stability for its members, for whom coffee is a key source of income and helps promote their rights.",
-        flavorCategories: ["Fruity"],
-        sweetness: "High",
-        body: "Medium",
-        acidity: "Low",
-        ourTastingNotes: ["honeydew", "honey", "orange"],
-    };
-</script>
+    const getPriceWeightDisplay = (coffee: any): string => {
+        const ounces: number = Math.ceil(coffee.priceTargetWeightGrams*0.035274);
+        return `${ounces} oz / ${coffee.priceTargetWeightGrams} g`;
+    }
 
-<div class="justify-center">
-    <div class="card card-compact lg:card-normal w-full max-w-7xl sm:card-side rounded-none">
-        <figure class="my-0">
-            <img src={sampleImage2} alt={coffee.name} class="m-0 h-96 sm:h-fit"/>
-        </figure>
-        <div class="mt-3 sm:mt-0 sm:pl-8">
-            <div class="text-xl font-light leading-none">
-                {coffee.roaster.name}
+    const GET_COFFEE_QUERY = gql`
+        query Coffee($where: CoffeeWhereUniqueInput!) {
+            coffee(where: $where) {
+                id
+                createdAt
+                name
+                photos
+                roaster {
+                    name
+                    link
+                    logoPhoto
+                }
+                country
+                location
+                elevationStart
+                elevationEnd
+                producer
+                varietals
+                process
+                roasterTastingNotes
+                roasterDescription
+                price
+                priceTargetWeightGrams
+                flavorCategories
+                sweetness
+                body
+                acidity
+                ourTastingNotes
+            }
+        }
+    `;
+
+    const coffeeResult = query(GET_COFFEE_QUERY, { variables: { where: { id: +$page.params.id }}});
+</script>
+{#if $coffeeResult.loading}
+    <h2>Loading...</h2>
+{:else if $coffeeResult.error}
+    <p>Error: {$coffeeResult.error.message}</p>
+{:else}
+    <div class="justify-center">
+        <div class="card card-compact lg:card-normal w-full max-w-7xl sm:card-side rounded-none">
+            <figure class="my-0">
+                <img src={sampleImage2} alt={$coffeeResult.data.coffee.name} class="m-0 h-96 sm:h-fit"/>
+            </figure>
+            <div class="mt-3 sm:mt-0 sm:pl-8">
+                <div class="text-xl font-light leading-none">
+                    {$coffeeResult.data.coffee.roaster.name}
+                </div>
+                <div class="text-3xl sm:text-4xl font-thin leading-none">
+                    {$coffeeResult.data.coffee.name}
+                </div>
+                <div class="my-2 text-sm">
+                    <span>${$coffeeResult.data.coffee.price.toFixed(2)}</span>
+                    <span class="font-extralight">- {getPriceWeightDisplay($coffeeResult.data.coffee)}</span>
+                </div>
+                <div class="col-span-3 lg:col-span-2">
+                    <CoffeeProperty type="origin"
+                        >{$coffeeResult.data.coffee.location}, {$coffeeResult.data.coffee.country}</CoffeeProperty
+                    >
+                    <CoffeeProperty type="producer"
+                        >{$coffeeResult.data.coffee.producer}</CoffeeProperty
+                    >
+                    <CoffeeProperty type="process">{$coffeeResult.data.coffee.process}</CoffeeProperty>
+                    <CoffeeProperty type="varietal"
+                        >{$coffeeResult.data.coffee.varietals.join(", ")}</CoffeeProperty
+                    >
+                    <CoffeeProperty type="from the roaster">
+                        <div>{$coffeeResult.data.coffee.roasterTastingNotes.join(", ")}</div>
+                        <div class="mt-2">{$coffeeResult.data.coffee.roasterDescription}</div>
+                    </CoffeeProperty>
+                </div>
             </div>
-            <div class="text-3xl sm:text-4xl font-thin leading-none">
-                {coffee.name}
+        </div>
+        <div class="divider"/>
+        <div class="text-center w-full font-semibold">from drink the dirt</div>
+        <div class="mt-4 grid grid-cols-3 gap-4">
+            <div class="col-span-1 text-right mr-6">
+                <div class="mb-2">{$coffeeResult.data.coffee.roasterDescription}</div>
+                <CoffeeProperty type="flavor category">{$coffeeResult.data.coffee.flavorCategories.join(", ")}</CoffeeProperty>
+                <CoffeeProperty type="sweetness">{$coffeeResult.data.coffee.sweetness}</CoffeeProperty>
+                <CoffeeProperty type="body">{$coffeeResult.data.coffee.body}</CoffeeProperty>
+                <CoffeeProperty type="acidity">{$coffeeResult.data.coffee.acidity}</CoffeeProperty>
+                <CoffeeProperty type="our tasting notes">{$coffeeResult.data.coffee.ourTastingNotes.join(", ")}</CoffeeProperty>
             </div>
-            <div class="my-2 text-sm">
-                <span>$18.00</span>
-                <span class="font-extralight">- 12 oz / 340 g</span>
+            <div class="col-span-1 align-middle">
+                <img src={sampleImage2} alt={$coffeeResult.data.coffee.name} class="m-0 h-96 sm:h-fit"/>
             </div>
-            <div class="col-span-3 lg:col-span-2">
-                <CoffeeProperty type="origin"
-                    >{coffee.location}, {coffee.country}</CoffeeProperty
-                >
-                <CoffeeProperty type="producer"
-                    >{coffee.producer}</CoffeeProperty
-                >
-                <CoffeeProperty type="process">{coffee.process}</CoffeeProperty>
-                <CoffeeProperty type="varietal"
-                    >{coffee.varietals.join(", ")}</CoffeeProperty
-                >
-                <CoffeeProperty type="from the roaster">
-                    <div>{coffee.roasterTastingNotes.join(", ")}</div>
-                    <div class="mt-2">{coffee.roasterDescription}</div>
-                </CoffeeProperty>
+            <div class="col-span-1 align-middle">
+                <img src={sampleImage3} alt={$coffeeResult.data.coffee.name} class="m-0 h-96 sm:h-fit"/>
             </div>
         </div>
     </div>
-    <div class="divider"/>
-    <div class="text-center w-full font-semibold">from drink the dirt</div>
-    <div class="mt-4 grid grid-cols-3 gap-4">
-        <div class="col-span-1 text-right mr-6">
-            <div class="mb-2">{coffee.roasterDescription}</div>
-            <CoffeeProperty type="flavor category">{coffee.flavorCategories.join(", ")}</CoffeeProperty>
-            <CoffeeProperty type="sweetness">{coffee.sweetness}</CoffeeProperty>
-            <CoffeeProperty type="body">{coffee.body}</CoffeeProperty>
-            <CoffeeProperty type="acidity">{coffee.acidity}</CoffeeProperty>
-            <CoffeeProperty type="our tasting notes">{coffee.ourTastingNotes.join(", ")}</CoffeeProperty>
-        </div>
-        <div class="col-span-1 align-middle">
-            <img src={sampleImage2} alt={coffee.name} class="m-0 h-96 sm:h-fit"/>
-        </div>
-        <div class="col-span-1 align-middle">
-            <img src={sampleImage3} alt={coffee.name} class="m-0 h-96 sm:h-fit"/>
-        </div>
-    </div>
-</div>
+{/if}
