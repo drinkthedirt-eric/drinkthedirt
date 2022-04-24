@@ -39,7 +39,7 @@ model Coffee {
   varietals String[]
   process String
   roasterTastingNotes String[]
-  roasterDescrption String?
+  roasterDescription String?
   price Float?
   priceTargetWeightGrams Int?
 

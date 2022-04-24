@@ -41,6 +41,7 @@ type Coffee {
   process: String!
   producer: String!
   roaster: Roaster!
+  roasterDescrption: String
   roasterId: Int!
   roasterTastingNotes: [String!]!
   sweetness: FlavorProfileLevel!
@@ -83,6 +84,7 @@ type CoffeeCountAggregate {
   priceTargetWeightGrams: Int!
   process: Int!
   producer: Int!
+  roasterDescrption: Int!
   roasterId: Int!
   roasterTastingNotes: Int!
   sweetness: Int!
@@ -106,6 +108,7 @@ input CoffeeCountOrderByAggregateInput {
   priceTargetWeightGrams: SortOrder
   process: SortOrder
   producer: SortOrder
+  roasterDescrption: SortOrder
   roasterId: SortOrder
   roasterTastingNotes: SortOrder
   sweetness: SortOrder
@@ -129,6 +132,7 @@ input CoffeeCreateInput {
   process: String!
   producer: String!
   roaster: RoasterCreateNestedOneWithoutCoffeesInput!
+  roasterDescrption: String
   roasterTastingNotes: CoffeeCreateroasterTastingNotesInput
   sweetness: FlavorProfileLevel!
   varietals: CoffeeCreatevarietalsInput
@@ -151,6 +155,7 @@ input CoffeeCreateManyInput {
   priceTargetWeightGrams: Int
   process: String!
   producer: String!
+  roasterDescrption: String
   roasterId: Int!
   roasterTastingNotes: CoffeeCreateroasterTastingNotesInput
   sweetness: FlavorProfileLevel!
@@ -174,6 +179,7 @@ input CoffeeCreateManyRoasterInput {
   priceTargetWeightGrams: Int
   process: String!
   producer: String!
+  roasterDescrption: String
   roasterTastingNotes: CoffeeCreateroasterTastingNotesInput
   sweetness: FlavorProfileLevel!
   varietals: CoffeeCreatevarietalsInput
@@ -212,6 +218,7 @@ input CoffeeCreateWithoutRoasterInput {
   priceTargetWeightGrams: Int
   process: String!
   producer: String!
+  roasterDescrption: String
   roasterTastingNotes: CoffeeCreateroasterTastingNotesInput
   sweetness: FlavorProfileLevel!
   varietals: CoffeeCreatevarietalsInput
@@ -259,6 +266,7 @@ type CoffeeGroupBy {
   priceTargetWeightGrams: Int
   process: String!
   producer: String!
+  roasterDescrption: String
   roasterId: Int!
   roasterTastingNotes: [String!]
   sweetness: FlavorProfileLevel!
@@ -285,6 +293,7 @@ type CoffeeMaxAggregate {
   priceTargetWeightGrams: Int
   process: String
   producer: String
+  roasterDescrption: String
   roasterId: Int
   sweetness: FlavorProfileLevel
 }
@@ -303,6 +312,7 @@ input CoffeeMaxOrderByAggregateInput {
   priceTargetWeightGrams: SortOrder
   process: SortOrder
   producer: SortOrder
+  roasterDescrption: SortOrder
   roasterId: SortOrder
   sweetness: SortOrder
 }
@@ -321,6 +331,7 @@ type CoffeeMinAggregate {
   priceTargetWeightGrams: Int
   process: String
   producer: String
+  roasterDescrption: String
   roasterId: Int
   sweetness: FlavorProfileLevel
 }
@@ -339,6 +350,7 @@ input CoffeeMinOrderByAggregateInput {
   priceTargetWeightGrams: SortOrder
   process: SortOrder
   producer: SortOrder
+  roasterDescrption: SortOrder
   roasterId: SortOrder
   sweetness: SortOrder
 }
@@ -369,6 +381,7 @@ input CoffeeOrderByWithAggregationInput {
   priceTargetWeightGrams: SortOrder
   process: SortOrder
   producer: SortOrder
+  roasterDescrption: SortOrder
   roasterId: SortOrder
   roasterTastingNotes: SortOrder
   sweetness: SortOrder
@@ -393,6 +406,7 @@ input CoffeeOrderByWithRelationInput {
   process: SortOrder
   producer: SortOrder
   roaster: RoasterOrderByWithRelationInput
+  roasterDescrption: SortOrder
   roasterId: SortOrder
   roasterTastingNotes: SortOrder
   sweetness: SortOrder
@@ -416,6 +430,7 @@ enum CoffeeScalarFieldEnum {
   priceTargetWeightGrams
   process
   producer
+  roasterDescrption
   roasterId
   roasterTastingNotes
   sweetness
@@ -442,6 +457,7 @@ input CoffeeScalarWhereInput {
   priceTargetWeightGrams: IntNullableFilter
   process: StringFilter
   producer: StringFilter
+  roasterDescrption: StringNullableFilter
   roasterId: IntFilter
   roasterTastingNotes: StringNullableListFilter
   sweetness: EnumFlavorProfileLevelFilter
@@ -468,6 +484,7 @@ input CoffeeScalarWhereWithAggregatesInput {
   priceTargetWeightGrams: IntNullableWithAggregatesFilter
   process: StringWithAggregatesFilter
   producer: StringWithAggregatesFilter
+  roasterDescrption: StringNullableWithAggregatesFilter
   roasterId: IntWithAggregatesFilter
   roasterTastingNotes: StringNullableListFilter
   sweetness: EnumFlavorProfileLevelWithAggregatesFilter
@@ -509,6 +526,7 @@ input CoffeeUpdateInput {
   process: StringFieldUpdateOperationsInput
   producer: StringFieldUpdateOperationsInput
   roaster: RoasterUpdateOneRequiredWithoutCoffeesInput
+  roasterDescrption: NullableStringFieldUpdateOperationsInput
   roasterTastingNotes: CoffeeUpdateroasterTastingNotesInput
   sweetness: EnumFlavorProfileLevelFieldUpdateOperationsInput
   varietals: CoffeeUpdatevarietalsInput
@@ -530,6 +548,7 @@ input CoffeeUpdateManyMutationInput {
   priceTargetWeightGrams: NullableIntFieldUpdateOperationsInput
   process: StringFieldUpdateOperationsInput
   producer: StringFieldUpdateOperationsInput
+  roasterDescrption: NullableStringFieldUpdateOperationsInput
   roasterTastingNotes: CoffeeUpdateroasterTastingNotesInput
   sweetness: EnumFlavorProfileLevelFieldUpdateOperationsInput
   varietals: CoffeeUpdatevarietalsInput
@@ -575,6 +594,7 @@ input CoffeeUpdateWithoutRoasterInput {
   priceTargetWeightGrams: NullableIntFieldUpdateOperationsInput
   process: StringFieldUpdateOperationsInput
   producer: StringFieldUpdateOperationsInput
+  roasterDescrption: NullableStringFieldUpdateOperationsInput
   roasterTastingNotes: CoffeeUpdateroasterTastingNotesInput
   sweetness: EnumFlavorProfileLevelFieldUpdateOperationsInput
   varietals: CoffeeUpdatevarietalsInput
@@ -632,6 +652,7 @@ input CoffeeWhereInput {
   process: StringFilter
   producer: StringFilter
   roaster: RoasterRelationFilter
+  roasterDescrption: StringNullableFilter
   roasterId: IntFilter
   roasterTastingNotes: StringNullableListFilter
   sweetness: EnumFlavorProfileLevelFilter
