@@ -21,7 +21,7 @@
   };
 </script>
 
-<div class="flex justify-center font-light leading-tight">
+<div class="flex justify-center">
   <div class="card w-full max-w-7xl bg-base-200 px-4 py-4">
     <div class="grid grid-cols-3 gap-4">
       <div class="col-span-1">

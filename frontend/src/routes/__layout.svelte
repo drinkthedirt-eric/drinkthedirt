@@ -44,6 +44,6 @@
     </div>
 </div>
 
-<div class="container px-4 py-4 max-w-full prose">
+<div class="container px-4 py-4 max-w-full prose font-light leading-tight">
     <slot></slot>
 </div>
