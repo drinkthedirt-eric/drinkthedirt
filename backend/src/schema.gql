@@ -28,12 +28,16 @@ type Coffee {
   body: FlavorProfileLevel!
   country: String!
   createdAt: Timestamp!
+  elevationEnd: Int
+  elevationStart: Int
   flavorCategories: [FlavorCategory!]!
   id: Int!
   location: String
   name: String!
   ourTastingNotes: [String!]!
   photos: [JSON!]!
+  price: Float
+  priceTargetWeightGrams: Int
   process: String!
   producer: String!
   roaster: Roaster!
@@ -44,12 +48,20 @@ type Coffee {
 }
 
 type CoffeeAvgAggregate {
+  elevationEnd: Float
+  elevationStart: Float
   id: Float
+  price: Float
+  priceTargetWeightGrams: Float
   roasterId: Float
 }
 
 input CoffeeAvgOrderByAggregateInput {
+  elevationEnd: SortOrder
+  elevationStart: SortOrder
   id: SortOrder
+  price: SortOrder
+  priceTargetWeightGrams: SortOrder
   roasterId: SortOrder
 }
 
@@ -59,12 +71,16 @@ type CoffeeCountAggregate {
   body: Int!
   country: Int!
   createdAt: Int!
+  elevationEnd: Int!
+  elevationStart: Int!
   flavorCategories: Int!
   id: Int!
   location: Int!
   name: Int!
   ourTastingNotes: Int!
   photos: Int!
+  price: Int!
+  priceTargetWeightGrams: Int!
   process: Int!
   producer: Int!
   roasterId: Int!
@@ -78,12 +94,16 @@ input CoffeeCountOrderByAggregateInput {
   body: SortOrder
   country: SortOrder
   createdAt: SortOrder
+  elevationEnd: SortOrder
+  elevationStart: SortOrder
   flavorCategories: SortOrder
   id: SortOrder
   location: SortOrder
   name: SortOrder
   ourTastingNotes: SortOrder
   photos: SortOrder
+  price: SortOrder
+  priceTargetWeightGrams: SortOrder
   process: SortOrder
   producer: SortOrder
   roasterId: SortOrder
@@ -97,11 +117,15 @@ input CoffeeCreateInput {
   body: FlavorProfileLevel!
   country: String!
   createdAt: Timestamp
+  elevationEnd: Int
+  elevationStart: Int
   flavorCategories: CoffeeCreateflavorCategoriesInput
   location: String
   name: String!
   ourTastingNotes: CoffeeCreateourTastingNotesInput
   photos: CoffeeCreatephotosInput
+  price: Float
+  priceTargetWeightGrams: Int
   process: String!
   producer: String!
   roaster: RoasterCreateNestedOneWithoutCoffeesInput!
@@ -115,12 +139,16 @@ input CoffeeCreateManyInput {
   body: FlavorProfileLevel!
   country: String!
   createdAt: Timestamp
+  elevationEnd: Int
+  elevationStart: Int
   flavorCategories: CoffeeCreateflavorCategoriesInput
   id: Int
   location: String
   name: String!
   ourTastingNotes: CoffeeCreateourTastingNotesInput
   photos: CoffeeCreatephotosInput
+  price: Float
+  priceTargetWeightGrams: Int
   process: String!
   producer: String!
   roasterId: Int!
@@ -134,12 +162,16 @@ input CoffeeCreateManyRoasterInput {
   body: FlavorProfileLevel!
   country: String!
   createdAt: Timestamp
+  elevationEnd: Int
+  elevationStart: Int
   flavorCategories: CoffeeCreateflavorCategoriesInput
   id: Int
   location: String
   name: String!
   ourTastingNotes: CoffeeCreateourTastingNotesInput
   photos: CoffeeCreatephotosInput
+  price: Float
+  priceTargetWeightGrams: Int
   process: String!
   producer: String!
   roasterTastingNotes: CoffeeCreateroasterTastingNotesInput
@@ -169,11 +201,15 @@ input CoffeeCreateWithoutRoasterInput {
   body: FlavorProfileLevel!
   country: String!
   createdAt: Timestamp
+  elevationEnd: Int
+  elevationStart: Int
   flavorCategories: CoffeeCreateflavorCategoriesInput
   location: String
   name: String!
   ourTastingNotes: CoffeeCreateourTastingNotesInput
   photos: CoffeeCreatephotosInput
+  price: Float
+  priceTargetWeightGrams: Int
   process: String!
   producer: String!
   roasterTastingNotes: CoffeeCreateroasterTastingNotesInput
@@ -211,12 +247,16 @@ type CoffeeGroupBy {
   body: FlavorProfileLevel!
   country: String!
   createdAt: Timestamp!
+  elevationEnd: Int
+  elevationStart: Int
   flavorCategories: [FlavorCategory!]
   id: Int!
   location: String
   name: String!
   ourTastingNotes: [String!]
   photos: [JSON!]
+  price: Float
+  priceTargetWeightGrams: Int
   process: String!
   producer: String!
   roasterId: Int!
@@ -236,9 +276,13 @@ type CoffeeMaxAggregate {
   body: FlavorProfileLevel
   country: String
   createdAt: Timestamp
+  elevationEnd: Int
+  elevationStart: Int
   id: Int
   location: String
   name: String
+  price: Float
+  priceTargetWeightGrams: Int
   process: String
   producer: String
   roasterId: Int
@@ -250,9 +294,13 @@ input CoffeeMaxOrderByAggregateInput {
   body: SortOrder
   country: SortOrder
   createdAt: SortOrder
+  elevationEnd: SortOrder
+  elevationStart: SortOrder
   id: SortOrder
   location: SortOrder
   name: SortOrder
+  price: SortOrder
+  priceTargetWeightGrams: SortOrder
   process: SortOrder
   producer: SortOrder
   roasterId: SortOrder
@@ -264,9 +312,13 @@ type CoffeeMinAggregate {
   body: FlavorProfileLevel
   country: String
   createdAt: Timestamp
+  elevationEnd: Int
+  elevationStart: Int
   id: Int
   location: String
   name: String
+  price: Float
+  priceTargetWeightGrams: Int
   process: String
   producer: String
   roasterId: Int
@@ -278,9 +330,13 @@ input CoffeeMinOrderByAggregateInput {
   body: SortOrder
   country: SortOrder
   createdAt: SortOrder
+  elevationEnd: SortOrder
+  elevationStart: SortOrder
   id: SortOrder
   location: SortOrder
   name: SortOrder
+  price: SortOrder
+  priceTargetWeightGrams: SortOrder
   process: SortOrder
   producer: SortOrder
   roasterId: SortOrder
@@ -301,12 +357,16 @@ input CoffeeOrderByWithAggregationInput {
   body: SortOrder
   country: SortOrder
   createdAt: SortOrder
+  elevationEnd: SortOrder
+  elevationStart: SortOrder
   flavorCategories: SortOrder
   id: SortOrder
   location: SortOrder
   name: SortOrder
   ourTastingNotes: SortOrder
   photos: SortOrder
+  price: SortOrder
+  priceTargetWeightGrams: SortOrder
   process: SortOrder
   producer: SortOrder
   roasterId: SortOrder
@@ -320,12 +380,16 @@ input CoffeeOrderByWithRelationInput {
   body: SortOrder
   country: SortOrder
   createdAt: SortOrder
+  elevationEnd: SortOrder
+  elevationStart: SortOrder
   flavorCategories: SortOrder
   id: SortOrder
   location: SortOrder
   name: SortOrder
   ourTastingNotes: SortOrder
   photos: SortOrder
+  price: SortOrder
+  priceTargetWeightGrams: SortOrder
   process: SortOrder
   producer: SortOrder
   roaster: RoasterOrderByWithRelationInput
@@ -340,12 +404,16 @@ enum CoffeeScalarFieldEnum {
   body
   country
   createdAt
+  elevationEnd
+  elevationStart
   flavorCategories
   id
   location
   name
   ourTastingNotes
   photos
+  price
+  priceTargetWeightGrams
   process
   producer
   roasterId
@@ -362,12 +430,16 @@ input CoffeeScalarWhereInput {
   body: EnumFlavorProfileLevelFilter
   country: StringFilter
   createdAt: DateTimeFilter
+  elevationEnd: IntNullableFilter
+  elevationStart: IntNullableFilter
   flavorCategories: EnumFlavorCategoryNullableListFilter
   id: IntFilter
   location: StringNullableFilter
   name: StringFilter
   ourTastingNotes: StringNullableListFilter
   photos: JsonNullableListFilter
+  price: FloatNullableFilter
+  priceTargetWeightGrams: IntNullableFilter
   process: StringFilter
   producer: StringFilter
   roasterId: IntFilter
@@ -384,12 +456,16 @@ input CoffeeScalarWhereWithAggregatesInput {
   body: EnumFlavorProfileLevelWithAggregatesFilter
   country: StringWithAggregatesFilter
   createdAt: DateTimeWithAggregatesFilter
+  elevationEnd: IntNullableWithAggregatesFilter
+  elevationStart: IntNullableWithAggregatesFilter
   flavorCategories: EnumFlavorCategoryNullableListFilter
   id: IntWithAggregatesFilter
   location: StringNullableWithAggregatesFilter
   name: StringWithAggregatesFilter
   ourTastingNotes: StringNullableListFilter
   photos: JsonNullableListFilter
+  price: FloatNullableWithAggregatesFilter
+  priceTargetWeightGrams: IntNullableWithAggregatesFilter
   process: StringWithAggregatesFilter
   producer: StringWithAggregatesFilter
   roasterId: IntWithAggregatesFilter
@@ -399,12 +475,20 @@ input CoffeeScalarWhereWithAggregatesInput {
 }
 
 type CoffeeSumAggregate {
+  elevationEnd: Int
+  elevationStart: Int
   id: Int
+  price: Float
+  priceTargetWeightGrams: Int
   roasterId: Int
 }
 
 input CoffeeSumOrderByAggregateInput {
+  elevationEnd: SortOrder
+  elevationStart: SortOrder
   id: SortOrder
+  price: SortOrder
+  priceTargetWeightGrams: SortOrder
   roasterId: SortOrder
 }
 
@@ -413,11 +497,15 @@ input CoffeeUpdateInput {
   body: EnumFlavorProfileLevelFieldUpdateOperationsInput
   country: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  elevationEnd: NullableIntFieldUpdateOperationsInput
+  elevationStart: NullableIntFieldUpdateOperationsInput
   flavorCategories: CoffeeUpdateflavorCategoriesInput
   location: NullableStringFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
   ourTastingNotes: CoffeeUpdateourTastingNotesInput
   photos: CoffeeUpdatephotosInput
+  price: NullableFloatFieldUpdateOperationsInput
+  priceTargetWeightGrams: NullableIntFieldUpdateOperationsInput
   process: StringFieldUpdateOperationsInput
   producer: StringFieldUpdateOperationsInput
   roaster: RoasterUpdateOneRequiredWithoutCoffeesInput
@@ -431,11 +519,15 @@ input CoffeeUpdateManyMutationInput {
   body: EnumFlavorProfileLevelFieldUpdateOperationsInput
   country: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  elevationEnd: NullableIntFieldUpdateOperationsInput
+  elevationStart: NullableIntFieldUpdateOperationsInput
   flavorCategories: CoffeeUpdateflavorCategoriesInput
   location: NullableStringFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
   ourTastingNotes: CoffeeUpdateourTastingNotesInput
   photos: CoffeeUpdatephotosInput
+  price: NullableFloatFieldUpdateOperationsInput
+  priceTargetWeightGrams: NullableIntFieldUpdateOperationsInput
   process: StringFieldUpdateOperationsInput
   producer: StringFieldUpdateOperationsInput
   roasterTastingNotes: CoffeeUpdateroasterTastingNotesInput
@@ -472,11 +564,15 @@ input CoffeeUpdateWithoutRoasterInput {
   body: EnumFlavorProfileLevelFieldUpdateOperationsInput
   country: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
+  elevationEnd: NullableIntFieldUpdateOperationsInput
+  elevationStart: NullableIntFieldUpdateOperationsInput
   flavorCategories: CoffeeUpdateflavorCategoriesInput
   location: NullableStringFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
   ourTastingNotes: CoffeeUpdateourTastingNotesInput
   photos: CoffeeUpdatephotosInput
+  price: NullableFloatFieldUpdateOperationsInput
+  priceTargetWeightGrams: NullableIntFieldUpdateOperationsInput
   process: StringFieldUpdateOperationsInput
   producer: StringFieldUpdateOperationsInput
   roasterTastingNotes: CoffeeUpdateroasterTastingNotesInput
@@ -523,12 +619,16 @@ input CoffeeWhereInput {
   body: EnumFlavorProfileLevelFilter
   country: StringFilter
   createdAt: DateTimeFilter
+  elevationEnd: IntNullableFilter
+  elevationStart: IntNullableFilter
   flavorCategories: EnumFlavorCategoryNullableListFilter
   id: IntFilter
   location: StringNullableFilter
   name: StringFilter
   ourTastingNotes: StringNullableListFilter
   photos: JsonNullableListFilter
+  price: FloatNullableFilter
+  priceTargetWeightGrams: IntNullableFilter
   process: StringFilter
   producer: StringFilter
   roaster: RoasterRelationFilter
@@ -616,6 +716,33 @@ enum FlavorProfileLevel {
   Medium
 }
 
+input FloatNullableFilter {
+  equals: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  lt: Float
+  lte: Float
+  not: NestedFloatNullableFilter
+  notIn: [Float!]
+}
+
+input FloatNullableWithAggregatesFilter {
+  _avg: NestedFloatNullableFilter
+  _count: NestedIntNullableFilter
+  _max: NestedFloatNullableFilter
+  _min: NestedFloatNullableFilter
+  _sum: NestedFloatNullableFilter
+  equals: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  lt: Float
+  lte: Float
+  not: NestedFloatNullableWithAggregatesFilter
+  notIn: [Float!]
+}
+
 input IntFilter {
   equals: Int
   gt: Int
@@ -624,6 +751,33 @@ input IntFilter {
   lt: Int
   lte: Int
   not: NestedIntFilter
+  notIn: [Int!]
+}
+
+input IntNullableFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntNullableFilter
+  notIn: [Int!]
+}
+
+input IntNullableWithAggregatesFilter {
+  _avg: NestedFloatNullableFilter
+  _count: NestedIntNullableFilter
+  _max: NestedIntNullableFilter
+  _min: NestedIntNullableFilter
+  _sum: NestedIntNullableFilter
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntNullableWithAggregatesFilter
   notIn: [Int!]
 }
 
@@ -739,6 +893,33 @@ input NestedFloatFilter {
   notIn: [Float!]
 }
 
+input NestedFloatNullableFilter {
+  equals: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  lt: Float
+  lte: Float
+  not: NestedFloatNullableFilter
+  notIn: [Float!]
+}
+
+input NestedFloatNullableWithAggregatesFilter {
+  _avg: NestedFloatNullableFilter
+  _count: NestedIntNullableFilter
+  _max: NestedFloatNullableFilter
+  _min: NestedFloatNullableFilter
+  _sum: NestedFloatNullableFilter
+  equals: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  lt: Float
+  lte: Float
+  not: NestedFloatNullableWithAggregatesFilter
+  notIn: [Float!]
+}
+
 input NestedIntFilter {
   equals: Int
   gt: Int
@@ -758,6 +939,22 @@ input NestedIntNullableFilter {
   lt: Int
   lte: Int
   not: NestedIntNullableFilter
+  notIn: [Int!]
+}
+
+input NestedIntNullableWithAggregatesFilter {
+  _avg: NestedFloatNullableFilter
+  _count: NestedIntNullableFilter
+  _max: NestedIntNullableFilter
+  _min: NestedIntNullableFilter
+  _sum: NestedIntNullableFilter
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: NestedIntNullableWithAggregatesFilter
   notIn: [Int!]
 }
 
@@ -842,6 +1039,22 @@ input NestedStringWithAggregatesFilter {
   not: NestedStringWithAggregatesFilter
   notIn: [String!]
   startsWith: String
+}
+
+input NullableFloatFieldUpdateOperationsInput {
+  decrement: Float
+  divide: Float
+  increment: Float
+  multiply: Float
+  set: Float
+}
+
+input NullableIntFieldUpdateOperationsInput {
+  decrement: Int
+  divide: Int
+  increment: Int
+  multiply: Int
+  set: Int
 }
 
 input NullableStringFieldUpdateOperationsInput {
