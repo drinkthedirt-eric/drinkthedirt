@@ -33,10 +33,14 @@ model Coffee {
   roaster Roaster @relation(fields: [roasterId], references: [id])
   country String
   location String? // can include region, city, etc. comma-delimited.
+  elevationStart Int?
+  elevationEnd Int?
   producer String
   varietals String[]
   process String
   roasterTastingNotes String[]
+  price Float?
+  priceTargetWeightGrams Int?
 
   flavorCategories FlavorCategory[]
   sweetness FlavorProfileLevel

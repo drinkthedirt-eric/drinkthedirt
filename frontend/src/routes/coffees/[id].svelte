@@ -1,6 +1,5 @@
 <script lang="ts">
     import CoffeeProperty from "../../lib/coffee_property.svelte";
-    import sampleImage from "../sample_coffee.png";
     import sampleImage2 from "../sample_coffee_2.png";
     import sampleImage3 from "../sample_coffee_3.png";
 
@@ -28,7 +27,7 @@
     };
 </script>
 
-<div class="flex justify-center">
+<div class="justify-center">
     <div class="card card-compact lg:card-normal w-full max-w-7xl sm:card-side rounded-none">
         <figure class="my-0">
             <img src={sampleImage2} alt={coffee.name} class="m-0 h-96 sm:h-fit"/>
@@ -40,7 +39,7 @@
             <div class="text-3xl sm:text-4xl font-thin leading-none">
                 {coffee.name}
             </div>
-            <div class="mt-2 text-sm">
+            <div class="my-2 text-sm">
                 <span>$18.00</span>
                 <span class="font-extralight">- 12 oz / 340 g</span>
             </div>
@@ -60,6 +59,24 @@
                     <div class="mt-2">{coffee.roasterDescription}</div>
                 </CoffeeProperty>
             </div>
+        </div>
+    </div>
+    <div class="divider"/>
+    <div class="text-center w-full font-semibold">from drink the dirt</div>
+    <div class="mt-4 grid grid-cols-3 gap-4">
+        <div class="col-span-1 text-right mr-6">
+            <div class="mb-2">{coffee.roasterDescription}</div>
+            <CoffeeProperty type="flavor category">{coffee.flavorCategories.join(", ")}</CoffeeProperty>
+            <CoffeeProperty type="sweetness">{coffee.sweetness}</CoffeeProperty>
+            <CoffeeProperty type="body">{coffee.body}</CoffeeProperty>
+            <CoffeeProperty type="acidity">{coffee.acidity}</CoffeeProperty>
+            <CoffeeProperty type="our tasting notes">{coffee.ourTastingNotes.join(", ")}</CoffeeProperty>
+        </div>
+        <div class="col-span-1 align-middle">
+            <img src={sampleImage2} alt={coffee.name} class="m-0 h-96 sm:h-fit"/>
+        </div>
+        <div class="col-span-1 align-middle">
+            <img src={sampleImage3} alt={coffee.name} class="m-0 h-96 sm:h-fit"/>
         </div>
     </div>
 </div>
