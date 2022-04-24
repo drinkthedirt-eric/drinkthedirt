@@ -22,8 +22,8 @@
     const coffees = query(GET_COFFEES_QUERY);
 </script>
 
-<h1>Coffees!</h1>
-<p>Browse coffee reviews, recipes, and tasting notes.</p>
+<div class="font-bold text-4xl">Coffees!</div>
+<div>Browse coffee reviews, recipes, and tasting notes.</div>
 {#if $coffees.loading}
     <h2>Loading...</h2>
 {:else if $coffees.error}
