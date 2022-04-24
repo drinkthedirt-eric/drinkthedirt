@@ -5,12 +5,16 @@
 <script lang="ts">
     import { gql } from "@apollo/client/core";
     import { query } from "svelte-apollo";
+    import sampleImage from "./sample_coffee.png";
 
     const GET_COFFEES_QUERY = gql`
         query {
             coffees {
-            id
-            name
+                id
+                name
+                roaster {
+                    name
+                }
             }
         }
     `;
@@ -19,15 +23,34 @@
 </script>
 
 <h1>Coffees!</h1>
-
+<p>Browse coffee reviews, recipes, and tasting notes.</p>
 {#if $coffees.loading}
-    Loading...
+    <h2>Loading...</h2>
 {:else if $coffees.error}
-    Error: {$coffees.error.message}
+    <p>Error: {$coffees.error.message}</p>
 {:else}
-    <ul>
-        {#each $coffees.data.coffees as coffee}
-            <li>{coffee.name}</li>
-        {/each}
-    </ul>
+    <table class="table table-compact border hover:bg-base-200">
+            {#each $coffees.data.coffees as coffee}
+                <tr>
+                    <a href="coffees/{coffee.id}">
+                        <td class="w-24">
+                            <img src={sampleImage} alt={coffee.name} />
+                        </td>
+                        <td>
+                            <div class="font-bold">{coffee.roaster.name}</div>
+                            <div>{coffee.name}</div>
+                        </td>
+                    </a>
+                </tr>
+            {/each}
+    </table>
+
 {/if}
+
+<!-- Destroying link styling here to make the table a link. -->
+<style>
+a {
+    display:block;
+    text-decoration: none;
+}
+</style>
