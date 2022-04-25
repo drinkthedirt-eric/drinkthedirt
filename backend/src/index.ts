@@ -5,11 +5,31 @@ import express from "express";
 import cors from "cors"
 import { createServer } from "@graphql-yoga/node";
 import { createContext } from './context';
-import { resolvers } from "@generated/type-graphql";
+import { 
+  Coffee,
+  Roaster,
+  FindUniqueCoffeeResolver,
+  FindUniqueRoasterResolver,
+  FindManyCoffeeResolver,
+  AggregateCoffeeResolver,
+  AggregateRoasterResolver,
+  FindManyRoasterResolver,
+  CoffeeRelationsResolver,
+ } from "@generated/type-graphql";
 
 async function main() {
   const schema = await buildSchema({
-      resolvers: resolvers,
+      resolvers: [
+        Coffee,
+        Roaster,
+        FindUniqueCoffeeResolver,
+        FindUniqueRoasterResolver,
+        FindManyCoffeeResolver,
+        AggregateCoffeeResolver,
+        AggregateRoasterResolver,
+        FindManyRoasterResolver,
+        CoffeeRelationsResolver,
+      ],
       dateScalarMode: "timestamp",
       // automatically create `schema.gql` file with schema definition in current folder
       emitSchemaFile: path.resolve(__dirname, "schema.gql"),
