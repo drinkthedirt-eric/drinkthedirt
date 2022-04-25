@@ -6,10 +6,15 @@
     import { ApolloClient, InMemoryCache } from "@apollo/client/core/index.js";
     import { setClient } from "$lib/svelte-apollo-sad/svelte-apollo";
 
+
+    const endpoints = {
+        dev: "http://localhost:4000/graphql",
+        prod: "https://2fvpqj4xmb.execute-api.us-west-2.amazonaws.com/graphql"
+    }
+
     // Global setup
-    // TODO this brings in some weird react dependencies. Use @apollo/client/core for now.
     const apolloClient = new ApolloClient({
-        uri: "http://localhost:4000/graphql",
+        uri: endpoints.prod,
         cache: new InMemoryCache()
     });
     setClient(apolloClient);

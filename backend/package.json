@@ -23,6 +23,7 @@
     "graphql-fields": "^2.0.3",
     "graphql-scalars": "^1.16.0",
     "graphql-yoga": "^1.18.3",
+    "morgan": "^1.10.0",
     "reflect-metadata": "^0.1.13",
     "ts-node": "^10.7.0",
     "tslib": "^2.3.1",
