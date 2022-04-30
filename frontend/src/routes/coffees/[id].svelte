@@ -57,7 +57,7 @@
                 <img src={sampleImage2} alt={$coffeeResult.data.coffee.name} class="m-0 h-96 lg:h-fit"/>
             </figure>
             <div class="mt-3 lg:mt-0 lg:pl-8 lg:w-1/2">
-                <div class="text-xl font-light leading-none">
+                <div class="text-2xl leading-none">
                     {$coffeeResult.data.coffee.roaster.name}
                 </div>
                 <div class="text-3xl lg:text-4xl font-thin leading-none">
@@ -84,22 +84,27 @@
             </div>
         </div>
         <div class="divider"/>
-        <div class="text-center w-full font-semibold">from drink the dirt</div>
-        <div class="mt-4 grid grid-cols-3 gap-4">
-            <div class="col-span-3 lg:col-span-1 gap-4 lg:text-right mr-6">
-                <div class="mb-2">{$coffeeResult.data.coffee.roasterDescription}</div>
+        <div class="w-full text-2xl">from drink the dirt</div>
+        <div class="grid grid-cols-4 gap-1 mt-4">
+            <div class="col-span-4 md:col-span-3">
+                <CoffeeProperty type="our review">{$coffeeResult.data.coffee.roasterDescription}</CoffeeProperty>            
+                <CoffeeProperty type="our impressions">{$coffeeResult.data.coffee.ourTastingNotes.join(", ")}</CoffeeProperty>
+            </div>
+            <div class="col-span-4 md:col-span-1 md:order-first grow-0">
                 <div class="grid grid-cols-2">
-                    <div class="col-span-1">
+                    <div class="col-span-1 md:col-span-2">
                         <CoffeeProperty type="flavor category">{$coffeeResult.data.coffee.flavorCategories.join(", ")}</CoffeeProperty>
-                        <CoffeeProperty type="our tasting notes">{$coffeeResult.data.coffee.ourTastingNotes.join(", ")}</CoffeeProperty>
-                    </div>
-                    <div class="col-span-1">
                         <CoffeeProperty type="sweetness">{$coffeeResult.data.coffee.sweetness}</CoffeeProperty>
+                    </div>
+                    <div class="col-span-1 md:col-span-2">
                         <CoffeeProperty type="body">{$coffeeResult.data.coffee.body}</CoffeeProperty>
                         <CoffeeProperty type="acidity">{$coffeeResult.data.coffee.acidity}</CoffeeProperty>
                     </div>
+                </div>    
             </div>
-            </div>
+        </div>
+        <div class="divider"/>
+        <div class="mt-4 grid grid-cols-3 gap-4">
             <div class="col-span-3 lg:col-span-1">
                 <img src={sampleRecipeImage} alt={$coffeeResult.data.coffee.name} class="m-0 h-96 sm:h-fit"/>
             </div>
