@@ -6,6 +6,9 @@
     import { gql } from "@apollo/client/core/index.js";
     import { query } from "$lib/svelte-apollo-sad/svelte-apollo";;
     import sampleImage from "./sample_coffee.png";
+    import DiscordLink from "$lib/links/discord_link.svelte";
+    import EmailUsLink from "$lib/links/email_us_link.svelte";
+    import InstagramLink from "$lib/links/instagram_link.svelte";
 
     const GET_COFFEES_QUERY = gql`
         query {
@@ -25,9 +28,11 @@
 <div class="flex flex-col">
     <div class="font-bold text-4xl pb-2">DRINK THE DIRT</div>
     <div>Find your next favorite coffee and brew it perfectly with our catalog of specialty coffee reviews and recipes. We review and dial-in every coffee for every setup to help you get the most out of your brew.</div>
+    <br/>
+    <div>We're very new. Join our <DiscordLink /> community or drop us a note at <EmailUsLink /> to talk coffee, debug your brew, or give us feedback. Follow us on <InstagramLink/> for updates!</div>
     <div class="divider" />
     <div class="font-bold text-2xl">Recent Reviews and Recipes</div>
-    <a href="/coffees">See all the coffees!</a>
+    <a class="link link-primary" href="/coffees">See all the coffees!</a>
     {#if $coffees.loading}
         <p>Loading...</p>
     {:else if $coffees.error}
@@ -49,6 +54,4 @@
                 {/each}
         </table>
     {/if}
-    <div class="divider" />
-    <p>We're very new. Join our Discord or drop us a note at hello@drinkthedirt.coffee to talk coffee, debug your brew, or give us feedback.</p>
 </div>

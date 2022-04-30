@@ -3,8 +3,11 @@
 </svelte:head>
 
 <script lang="ts">
+    import DiscordLink from "$lib/links/discord_link.svelte";
+    import EmailUsLink from "$lib/links/email_us_link.svelte";
+    import InstagramLink from "$lib/links/instagram_link.svelte";
 </script>
 
 <div class="font-bold text-4xl pb-2">Community</div>
-<div class="pb-2">Join our small but mighty community of coffee geeks on our Discord. We talk coffee equipment, brewing, roasters, and shops. We ask questions, give advice, share coffees and help each other be the best we can be!</div>
-<div>Say hello anytime at hello@drinkthedirt.coffee</div>
+<div class="pb-2">Join our community of coffee geeks on <DiscordLink/>. We talk coffee brewing, equipment, roasters, and shops. We share our experiences and advice, and get better at brewing together!</div>
+<div>Say hello anytime at <EmailUsLink /> or follow us on <InstagramLink /> for updates.</div>
