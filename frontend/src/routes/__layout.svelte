@@ -5,16 +5,23 @@
     import "$lib/global.css";
     import { ApolloClient, InMemoryCache } from "@apollo/client/core/index.js";
     import { setClient } from "$lib/svelte-apollo-sad/svelte-apollo";
-
+    import { dev } from '$app/env';
 
     const endpoints = {
         dev: "http://localhost:4000/graphql",
         prod: "https://2fvpqj4xmb.execute-api.us-west-2.amazonaws.com/graphql"
     }
 
+    let endpoint = endpoints.dev;
+
+    if (!dev) {
+        endpoint = endpoints.prod
+    }
+        
+
     // Global setup
     const apolloClient = new ApolloClient({
-        uri: endpoints.prod,
+        uri: endpoint,
         cache: new InMemoryCache()
     });
     setClient(apolloClient);
