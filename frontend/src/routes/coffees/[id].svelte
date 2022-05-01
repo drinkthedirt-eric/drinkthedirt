@@ -3,7 +3,7 @@
     import { gql } from "@apollo/client/core/index.js";
     import { query } from "$lib/svelte-apollo-sad/svelte-apollo";;
     import CoffeeProperty from "../../lib/coffee_property.svelte";
-    import sampleImage2 from "../sample_coffee_2.png";
+    import Carousel from "../../lib/carousel.svelte";
     import sampleRecipeImage from "../sample_recipe.png";
     import sampleRecipeImage2 from "../sample_recipe_2.png";
 
@@ -11,6 +11,14 @@
         const ounces: number = Math.ceil(coffee.priceTargetWeightGrams*0.035274);
         return `${ounces} oz / ${coffee.priceTargetWeightGrams} g`;
     }
+
+    const getImageUrls = (imagePaths: string[]): string[] => {
+        return imagePaths.map(imagePath => getImageUrl(imagePath));
+    }
+
+    const getImageUrl = (imagePath: string): string => {
+        return `https://ik.imagekit.io/drinkthedirt/${imagePath}`;
+    };
 
     const GET_COFFEE_QUERY = gql`
         query Coffee($where: CoffeeWhereUniqueInput!) {
@@ -45,6 +53,8 @@
     `;
 
     const coffeeResult = query(GET_COFFEE_QUERY, { variables: { where: { id: +$page.params.id }}});
+
+    const singleColBP = "md";
 </script>
 {#if $coffeeResult.loading}
     <h2>Loading...</h2>
@@ -52,15 +62,15 @@
     <p>Error: {$coffeeResult.error.message}</p>
 {:else}
     <div class="justify-center">
-        <div class="card w-full max-w-7xl lg:card-side rounded-none">
-            <figure class="my-0 lg:w-1/2">
-                <img src={sampleImage2} alt={$coffeeResult.data.coffee.name} class="m-0 h-96 lg:h-fit"/>
-            </figure>
-            <div class="mt-3 lg:mt-0 lg:pl-8 lg:w-1/2">
+        <div class="grid grid-cols-2 gap-4 w-full max-w-7xl {singleColBP}:card-side rounded-none">
+            <div class="my-0 col-span-2 {singleColBP}:col-span-1">
+                <Carousel carouselId="hello" imageUrls={getImageUrls($coffeeResult.data.coffee.photos)}/>
+            </div>
+            <div class="mt-3 col-span-2 {singleColBP}:col-span-1 {singleColBP}:mt-0 {singleColBP}:pl-8">
                 <div class="text-2xl leading-none">
                     {$coffeeResult.data.coffee.roaster.name}
                 </div>
-                <div class="text-3xl lg:text-4xl font-thin leading-none">
+                <div class="text-3xl {singleColBP}:text-4xl font-thin leading-none">
                     {$coffeeResult.data.coffee.name}
                 </div>
                 <div class="my-2 text-sm">
@@ -86,17 +96,17 @@
         <div class="divider"/>
         <div class="w-full text-2xl">from drink the dirt</div>
         <div class="grid grid-cols-4 gap-1 mt-4">
-            <div class="col-span-4 md:col-span-3">
+            <div class="col-span-4 {singleColBP}:col-span-3">
                 <CoffeeProperty type="our review">{$coffeeResult.data.coffee.roasterDescription}</CoffeeProperty>            
                 <CoffeeProperty type="our impressions">{$coffeeResult.data.coffee.ourTastingNotes.join(", ")}</CoffeeProperty>
             </div>
-            <div class="col-span-4 md:col-span-1 md:order-first grow-0">
+            <div class="col-span-4 {singleColBP}:col-span-1 {singleColBP}:order-first grow-0">
                 <div class="grid grid-cols-2">
-                    <div class="col-span-1 md:col-span-2">
+                    <div class="col-span-1 {singleColBP}:col-span-2">
                         <CoffeeProperty type="flavor category">{$coffeeResult.data.coffee.flavorCategories.join(", ")}</CoffeeProperty>
                         <CoffeeProperty type="sweetness">{$coffeeResult.data.coffee.sweetness}</CoffeeProperty>
                     </div>
-                    <div class="col-span-1 md:col-span-2">
+                    <div class="col-span-1 {singleColBP}:col-span-2">
                         <CoffeeProperty type="body">{$coffeeResult.data.coffee.body}</CoffeeProperty>
                         <CoffeeProperty type="acidity">{$coffeeResult.data.coffee.acidity}</CoffeeProperty>
                     </div>
@@ -106,10 +116,10 @@
         <div class="divider"/>
         <div class="mt-4 grid grid-cols-3 gap-4">
             <div class="col-span-3 lg:col-span-1">
-                <img src={sampleRecipeImage} alt={$coffeeResult.data.coffee.name} class="m-0 h-96 sm:h-fit"/>
+                <img src={sampleRecipeImage} alt={$coffeeResult.data.coffee.name} class="m-0 h-96 {singleColBP}:h-fit"/>
             </div>
             <div class="col-span-3 lg:col-span-1">
-                <img src={sampleRecipeImage2} alt={$coffeeResult.data.coffee.name} class="m-0 h-96 sm:h-fit"/>
+                <img src={sampleRecipeImage2} alt={$coffeeResult.data.coffee.name} class="m-0 h-96 {singleColBP}:h-fit"/>
             </div>
         </div>
     </div>
