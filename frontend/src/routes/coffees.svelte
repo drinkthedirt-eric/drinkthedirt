@@ -31,18 +31,18 @@
     <p>Error: {$coffees.error.message}</p>
 {:else}
     <table class="table table-compact border hover:bg-base-200">
-            {#each $coffees.data.coffees as coffee}
-                <tr>
-                    <a href="coffees/{coffee.id}" class="table-anchor">
-                        <td class="w-20 align-top p-0">
-                            <img src={sampleImage} alt={coffee.name} class="m-0"/>
-                        </td>
-                        <td class="align-top">
-                            <div class="font-light">{coffee.roaster.name}</div>
-                            <div class="font-thin text-2xl">{coffee.name}</div>
-                        </td>
-                    </a>
-                </tr>
-            {/each}
+        {#each $coffees.data.coffees as coffee}
+            <tr>
+                <a href="coffees/{coffee.id}" class="table-anchor">
+                    <td class="w-20 align-top p-0">
+                        <img src={sampleImage} alt={coffee.name} class="m-0"/>
+                    </td>
+                    <td class="align-top">
+                        <div class="font-light">{coffee.roaster.name}</div>
+                        <div class="font-thin text-2xl">{coffee.name}</div>
+                    </td>
+                </a>
+            </tr>
+        {/each}
     </table>
 {/if}

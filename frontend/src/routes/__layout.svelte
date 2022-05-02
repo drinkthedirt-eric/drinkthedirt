@@ -43,7 +43,6 @@
             <li><a href="/brewing">Brewing</a></li>
             <li><a href="/classes">Tastings & Classes</a></li>
             <li><a href="/community">Community</a></li>
-            <li><a href="/about">About</a></li>
         </ul>
       </div>
     <div class="flex-1">
