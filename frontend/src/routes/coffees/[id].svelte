@@ -53,7 +53,6 @@
     `;
 
     const coffeeResult = query(GET_COFFEE_QUERY, { variables: { where: { id: +$page.params.id }}});
-    const singleColBP = "md";
     let recipes = [
         {
             "method": "v60",
@@ -104,11 +103,6 @@
         }
     ];
 
-    const recipeStrings = {
-        v60 : "V60",
-        aeropress: "Aeropress"
-    };
-
     const recipeTitles = recipes.map(recipe => {
         return {
             label: getMethod(recipe.method),
@@ -145,16 +139,17 @@
 {:else if $coffeeResult.error}
     <p>Error: {$coffeeResult.error.message}</p>
 {:else}
-    <div class="justify-center">
-        <div class="grid grid-cols-2 gap-4 w-full max-w-7xl {singleColBP}:card-side rounded-none">
-            <div class="my-0 col-span-2 {singleColBP}:col-span-1">
+    <div>
+
+        <div class="grid grid-cols-2 gap-4 w-full max-w-7xl md:card-side rounded-none">
+            <div class="my-0 col-span-2 md:col-span-1">
                 <Carousel carouselId="hello" imageUrls={getImageUrls($coffeeResult.data.coffee.photos)}/>
             </div>
-            <div class="mt-3 col-span-2 {singleColBP}:col-span-1 {singleColBP}:mt-0 {singleColBP}:pl-8">
+            <div class="mt-3 col-span-2 md:col-span-1 md:mt-0 md:pl-8">
                 <div class="text-2xl leading-none">
                     {$coffeeResult.data.coffee.roaster.name}
                 </div>
-                <div class="text-3xl {singleColBP}:text-4xl font-thin leading-none">
+                <div class="text-3xl md:text-4xl font-thin leading-none">
                     {$coffeeResult.data.coffee.name}
                 </div>
                 <div class="my-2 text-sm">
@@ -180,17 +175,17 @@
         <div class="divider"/>
         <div class="w-full text-2xl">from drink the dirt</div>
         <div class="grid grid-cols-4 gap-1 mt-4">
-            <div class="col-span-4 {singleColBP}:col-span-3">
+            <div class="col-span-4 md:col-span-3">
                 <CoffeeProperty type="our review">{$coffeeResult.data.coffee.roasterDescription}</CoffeeProperty>            
                 <CoffeeProperty type="our impressions">{$coffeeResult.data.coffee.ourTastingNotes.join(", ")}</CoffeeProperty>
             </div>
-            <div class="col-span-4 {singleColBP}:col-span-1 {singleColBP}:order-first grow-0">
+            <div class="col-span-4 md:col-span-1 md:order-first grow-0">
                 <div class="grid grid-cols-2">
-                    <div class="col-span-1 {singleColBP}:col-span-2">
+                    <div class="col-span-1 md:col-span-2">
                         <CoffeeProperty type="flavor category">{$coffeeResult.data.coffee.flavorCategories.join(", ")}</CoffeeProperty>
                         <CoffeeProperty type="sweetness">{$coffeeResult.data.coffee.sweetness}</CoffeeProperty>
                     </div>
-                    <div class="col-span-1 {singleColBP}:col-span-2">
+                    <div class="col-span-1 md:col-span-2">
                         <CoffeeProperty type="body">{$coffeeResult.data.coffee.body}</CoffeeProperty>
                         <CoffeeProperty type="acidity">{$coffeeResult.data.coffee.acidity}</CoffeeProperty>
                     </div>

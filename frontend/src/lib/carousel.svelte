@@ -7,7 +7,7 @@
     onMount(async () => {
         const module = await import("@glidejs/glide");
         const Glide = module.default;
-        new Glide(`.${carouselId}`).mount();
+        const carousel = new Glide(`.${carouselId}`).mount();
     });
 </script>
 
