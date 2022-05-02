@@ -1,11 +1,6 @@
 <svelte:head>
 </svelte:head>
 
-<!-- Required Core Stylesheet -->
-<link rel="stylesheet" href="../node_modules/@glidejs/glide/dist/css/glide.core.min.css">
-<!-- Optional Theme Stylesheet -->
-<link rel="stylesheet" href="../node_modules/@glidejs/glide/dist/css/glide.theme.min.css">
-
 <script lang="ts">
     import "$lib/global.css";
     import { ApolloClient, InMemoryCache } from "@apollo/client/core/index.js";

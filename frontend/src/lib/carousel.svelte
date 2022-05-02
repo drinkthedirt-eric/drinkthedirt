@@ -1,11 +1,10 @@
 <svelte:head>
-    <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.core.min.css">
 </svelte:head>
 
-<script lang="ts">
-    
+<script lang="ts">    
     import { onMount } from "svelte";
-
+    import "$lib/glide_css/css/glide.core.min.css"
+    import "$lib/glide_css/css/glide.theme.min.css"
     export let imageUrls: string[];
     export let carouselId: string;
 
