@@ -1,4 +1,9 @@
+<svelte:head>
+    <link rel="stylesheet" href="node_modules/@glidejs/glide/dist/css/glide.core.min.css">
+</svelte:head>
+
 <script lang="ts">
+    
     import { onMount } from "svelte";
 
     export let imageUrls: string[];
