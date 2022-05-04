@@ -15,7 +15,7 @@
     });
 </script>
 
-<div class="glide {carouselId}">
+<div class="glide {carouselId} -m-2">
     <div class="glide__track" data-glide-el="track">
         <ul class="glide__slides">
             {#each imageUrls as imageUrl}

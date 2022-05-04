@@ -153,7 +153,7 @@
                 <div class="text-2xl leading-none">
                     {$coffeeResult.data.coffee.roaster.name}
                 </div>
-                <div class="text-3xl md:text-4xl font-thin leading-none">
+                <div class="text-3xl md:text-4xl font-semibold leading-none">
                     {$coffeeResult.data.coffee.name}
                 </div>
                 <div class="my-2 text-sm">
