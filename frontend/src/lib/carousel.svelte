@@ -30,3 +30,34 @@
         <button class="glide__arrow glide__arrow--right" data-glide-dir=">">❯</button>
     </div>
 </div>
+
+<style>
+.glide__arrow {
+    position: absolute;
+    display: block;
+    top: 50%;
+    z-index: 2;
+    color: black;
+    text-transform: uppercase;
+    padding: 0px 0px;
+    -webkit-text-stroke: 1px white;
+    background-color: transparent;
+    font-size: xx-large;
+    border: 0px;
+    border-radius: 0px;
+    box-shadow: 0;
+    text-shadow: 0;
+    opacity: 1;
+    cursor: pointer;
+    transition: opacity 150ms ease, border 300ms ease-in-out;
+    transform: 0;
+    line-height: 1;
+}
+
+.glide__arrow--left {
+  left: 5%;
+}
+.glide__arrow--right {
+  right: 5%;
+}
+</style>
