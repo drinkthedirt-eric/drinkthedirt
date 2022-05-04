@@ -89,6 +89,9 @@
                 {
                     name: "stir",
                 },
+                {
+                    name: "wait",
+                },
             ]
         },
         {

@@ -34,6 +34,8 @@ export function getStepName(name: string, pourStepCount?: number) {
             return `Pour ${pourStepCount}`;
         case "stir":
             return "Stir";
+        case "wait":
+            return "Wait";
     }
 
     return "UNKNOWN";
@@ -52,6 +54,8 @@ export function getStep(name: string, start_timestamp: number, end_timestamp, we
             return `Add water to ${weight}g. [~${start_time_string}-${end_time_string}]`;
         case "stir":
             return `Stir coffee bed to start whirpool.`;
+        case "wait":
+            return `Wait for all of the water to drain.`;
     }
 
     return "UNKNOWN"
