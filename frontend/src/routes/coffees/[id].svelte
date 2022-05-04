@@ -110,7 +110,6 @@
         };
     });
 
-    let activeRecipeTab = "v60";
     let pourStepCount = 0;
 
     function getStepNameWithLabel(recipe: any, name: string): string {
@@ -132,6 +131,9 @@
         }
         return getStepName(name);   
     }
+
+    let activeRecipeTab = "v60";
+    let showPrepSteps = false;
 </script>
 
 {#if $coffeeResult.loading}
@@ -216,45 +218,26 @@
                             <td>{recipe.variables?.water_temperature}&#176;C / {Math.round(recipe.variables?.water_temperature * 1.8 + 32)}&#176;F</td>
                         <tr>
                     </table>
-                    <div tabindex="0" class="collapse collapse-arrow px-0 md:w-1/2">
-                        <input type="checkbox">
-                        <div class="font-semibold collapse-title px-0">Prepare Your Brewer</div>
-                        <div class="collapse-content px-0">
-                            <ol>
-                                <li>Set the temperature of your kettle to {recipe.variables?.water_temperature}&#176;C / {Math.round(recipe.variables?.water_temperature * 1.8 + 32)}&#176;F.</li>
-                                <li>Insert filter paper into your V60.</li>
-                                <li>Flood V60 and wait for water to drain.</li>
-                                <li>Place cup on scale, and V60 on cup.</li>
-                                <li>Set your grinder to grind to ${recipe.variables?.grind_size} microns.</li>
-                                <li>Grind {recipe.variables?.coffee_weight}g of coffee.</li>
-                                <li>Add ground coffee to V60.</li>
-                                <li>Shake the V60 to flatten out the coffee grounds, and draw a spiral.</li>
-                                <li>Zero out scale.</li>
-                            </ol>
-                        </div>   
-                    </div>
-                    <div tabindex="0" class="collapse collapse-arrow py-0 px-0 md:w-1/2">
-                        <input type="checkbox" checked>
-                        <div class="font-semibold collapse-title px-0">Brew - {getName(recipe.name)}</div>
-                        <div class="collapse-content px-0">
-                            <ol>
-                                {#each recipe.steps as step} 
-                                    <li><span class="font-medium">{getStepNameWithLabel(recipe, step.name)}</span>: {getStep(step.name, step.start_timestamp, step.end_timestamp, step.weight)}</li>
-                                {/each}
-                            </ol>
-                        </div>   
-                    </div>
-                    <div tabindex="0" class="collapse collapse-arrow px-0 md:w-1/2">
-                        <input type="checkbox">
-                        <div class="font-semibold collapse-title px-0">Cool & Serve</div>
-                        <div class="collapse-content px-0">
-                            <ol>
-                                <li>Wait for all the water to drain.</li>
-                                <li>Pour into your drinking cup.</li>
-                                <li>Drink when coffee is at {60}&#176;C / {Math.round(60 * 1.8 + 32)}&#176;F.</li>
-                            </ol>
-                        </div>   
-                    </div>
+                    <div class="font-semibold mt-4 clickyStepTitle" on:click="{() => showPrepSteps = !showPrepSteps}">
+                        Prepare Brewer
+                        <span class="font-normal ml-2 {showPrepSteps === false ? '' : 'hidden'}">[+]</span>
+                        <span class="font-normal ml-2 {showPrepSteps === true ? '' : 'hidden'}">[-]</span>
+                    </div>                    
+                    <ol class="{showPrepSteps === true ? '' : 'hidden'}">
+                        <li>Set the temperature of your kettle to {recipe.variables?.water_temperature}&#176;C / {Math.round(recipe.variables?.water_temperature * 1.8 + 32)}&#176;F.</li>
+                        <li>Insert filter paper into your V60. Flood your V60 with water and wait for it to drain.</li>
+                        <li>Place cup on scale, and V60 on cup.</li>
+                        <li>Grind {recipe.variables?.coffee_weight}g of coffee to {recipe.variables?.grind_size} microns.</li>
+                        <li>Add ground coffee to V60, and shake the V60 to flatten out the coffee grounds.</li>
+                        <li>Zero out scale.</li>
+                    </ol>
+                    <div class="font-semibold mt-4">Brew - {getName(recipe.name)}</div>
+                    <ol>
+                        {#each recipe.steps as step} 
+                            <li><span class="font-medium">{getStepNameWithLabel(recipe, step.name)}</span>: {getStep(step.name, step.start_timestamp, step.end_timestamp, step.weight)}</li>
+                        {/each}
+                    </ol>
+                    <div class="mt-4">Drink your coffee! It will taste best after its cooled, at around {60}&#176;C / {Math.round(60 * 1.8 + 32)}&#176;F.</div>
                 {/if}
                 {#if recipe.method === "aeropress"}
                 <table class="table table-compact w-1/3 mt-4 mb-0">                        
@@ -275,41 +258,27 @@
                         <td>{recipe.variables?.water_temperature}&#176;C / {Math.round(recipe.variables?.water_temperature * 1.8 + 32)}&#176;F</td>
                     <tr>
                 </table>
-                <div tabindex="0" class="collapse collapse-arrow px-0 md:w-1/2">
-                    <input type="checkbox">
-                    <div class="font-semibold collapse-title px-0">Prepare Your Brewer</div>
-                    <div class="collapse-content px-0">
-                        <ol>
-                            <li>Set the temperature of your kettle to {recipe.variables?.water_temperature}&#176;C / {Math.round(recipe.variables?.water_temperature * 1.8 + 32)}&#176;F.</li>
-                            <li>Grind {recipe.variables?.coffee_weight}g coffee.</li>
-                            <li>Add ground coffee to Aeropress.</li>
-                            <li>Zero out scale.</li>
-                        </ol>
-                    </div>   
+
+                <div class="font-semibold mt-4 clickyStepTitle" on:click="{() => showPrepSteps = !showPrepSteps}">
+                    Prepare Brewer
+                    <span class="font-normal ml-2 {showPrepSteps === false ? '' : 'hidden'}">[+]</span>
+                    <span class="font-normal ml-2 {showPrepSteps === true ? '' : 'hidden'}">[-]</span>
                 </div>
-                <div tabindex="0" class="collapse collapse-arrow py-0 px-0 md:w-1/2">
-                    <input type="checkbox" checked>
-                    <div class="font-semibold collapse-title px-0">Brew - {getName(recipe.name)}</div>
-                    <div class="collapse-content px-0">
-                        <ol>
-                            <li>Add {recipe.variables?.water_weight}g to Aeropress.</li>
-                            <li>Swirl.</li>
-                            <li>Gently insert plunger.</li>
-                            <li>Wait 4 minutes.</li>
-                        </ol>
-                    </div>   
-                </div>
-                <div tabindex="0" class="collapse collapse-arrow px-0 md:w-1/2">
-                    <input type="checkbox">
-                    <div class="font-semibold collapse-title px-0">Cool & Serve</div>
-                    <div class="collapse-content px-0">
-                        <ol>
-                            <li>Wait for all the water to drain.</li>
-                            <li>Pour into your drinking cup.</li>
-                            <li>Drink when coffee is at {60}&#176;C / {Math.round(60 * 1.8 + 32)}&#176;F.</li>
-                        </ol>
-                    </div>   
-                </div>
+                <ol class="{showPrepSteps === true ? '' : 'hidden'}">
+                    <li>Set the temperature of your kettle to {recipe.variables?.water_temperature}&#176;C / {Math.round(recipe.variables?.water_temperature * 1.8 + 32)}&#176;F.</li>
+                    <li>Grind {recipe.variables?.coffee_weight}g of coffee to {recipe.variables?.grind_size} microns.</li>
+                    <li>Add ground coffee to Aeropress.</li>
+                    <li>Zero out scale.</li>
+                </ol>   
+                <div class="font-semibold mt-4">Brew - {getName(recipe.name)}</div>
+                <ol>
+                    <li>Add {recipe.variables?.water_weight}g to Aeropress.</li>
+                    <li>Swirl coffee and water.</li>
+                    <li>Insert plunger to create a vacuum.</li>
+                    <li>Wait 4 minutes.</li>
+                    <li>Press gently into a cup.</li>
+                </ol>
+                <div>Drink your coffee! It will taste best after its cooled, at around {60}&#176;C / {Math.round(60 * 1.8 + 32)}&#176;F.</div>
                 {/if}                     
             {/if}        
         {/each}
@@ -317,4 +286,7 @@
 {/if}
 
 <style>
+    .clickyStepTitle {
+        cursor: pointer;
+    }
 </style>
