@@ -48,6 +48,7 @@
                 body
                 acidity
                 ourTastingNotes
+                isFavorite
             }
         }
     `;
@@ -150,7 +151,12 @@
                 <Carousel carouselId="hello" imageUrls={getImageUrls($coffeeResult.data.coffee.photos)}/>
             </div>
             <div class="mt-3 col-span-2 md:col-span-1 md:mt-0 md:pl-8">
-                <div class="text-2xl leading-none">
+                {#if $coffeeResult.data.coffee.isFavorite}
+                    <div class="text-sm font-semibold leading-none text-white bg-indigo-600 p-2 border-round faveBadge">
+                        Drink the Dirt Fave!
+                    </div>                
+                {/if}
+                <div class="text-2xl leading-none mt-2">
                     {$coffeeResult.data.coffee.roaster.name}
                 </div>
                 <div class="text-3xl md:text-4xl font-semibold leading-none">
@@ -290,5 +296,9 @@
 <style>
     .clickyStepTitle {
         cursor: pointer;
+    }
+    .faveBadge {
+        display: inline-block;
+        border-radius: 10px;
     }
 </style>
