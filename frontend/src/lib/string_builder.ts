@@ -30,6 +30,10 @@ export function getMethod(method: string): string {
             return "V60";
         case "aeropress":
             return "Aeropress";        
+        case "V60":
+            return "V60";
+        case "Aeropress":
+            return "Aeropress";        
     } 
 
     return "UNKNOWN"
@@ -37,11 +41,11 @@ export function getMethod(method: string): string {
 
 export function getName(name: string): string {
     switch(name) {
-        case "2pour":
+        case "TwoPour":
             return "Bloom and 2 Pours";
-        case "3pour":
+        case "ThreePour":
             return "Bloom and 3 Pours";        
-        case "standard":
+        case "Standard":
             return "Standard Aeropress"
     } 
 
@@ -65,7 +69,7 @@ export function getStepName(name: string, pourStepCount?: number) {
     return "UNKNOWN";
 }
 
-export function getStep(name: string, start_timestamp: number, end_timestamp, weight?: number): string {
+export function getStep(name: string, start_timestamp: number, end_timestamp: number, weight?: number): string {
     const start_time_string = getTimeAsString(start_timestamp);
     const end_time_string = getTimeAsString(end_timestamp);
 
@@ -88,8 +92,8 @@ export function getStep(name: string, start_timestamp: number, end_timestamp, we
 function getTimeAsString(timestamp: number): string {
     const minutes = Math.floor(timestamp / 60);
     const seconds = timestamp % 60;
-    const minutesString = minutes == 0 ? "0" : String(minutes);
-    const secondsString = seconds == 0 ? "00" : String(seconds);
+    const minutesString = String(minutes);
+    const secondsString = String(seconds).padStart(2, "0");
 
     return minutesString + ":" + secondsString;
 }

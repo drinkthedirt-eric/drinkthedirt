@@ -50,6 +50,31 @@ model Coffee {
   ourTastingNotes String[]
   ourReview String?
   isFavorite Boolean @default(false)
+  recipes Recipe[]
+}
+
+model Recipe {
+  id Int @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  coffeeId Int
+  coffee Coffee @relation(fields: [coffeeId], references: [id])
+  method BrewMethod
+  name RecipeName
+  coffeeWeightGrams Int
+  waterWeightGrams Int
+  grindSizeMicrons Int
+  waterTempC Int
+  steps Json[]
+}
+
+enum RecipeName {
+    TwoPour
+    ThreePour
+}
+
+enum BrewMethod {
+    V60
+    Aeropress
 }
 
 enum FlavorCategory {

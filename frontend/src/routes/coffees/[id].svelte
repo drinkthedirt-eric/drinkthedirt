@@ -49,6 +49,15 @@
                 acidity
                 ourTastingNotes
                 isFavorite
+                recipes {
+                    method
+                    name
+                    coffeeWeightGrams
+                    waterWeightGrams
+                    grindSizeMicrons
+                    waterTempC
+                    steps
+                }
             }
         }
     `;
@@ -140,7 +149,16 @@
         document.getElementById('recipes').scrollIntoView();
     }
 
-    let activeRecipeTab = "v60";
+    function getRecipeTitles(recipes: any[]): any[] {
+        return recipes.map(recipe => {
+            return {
+                label: getMethod(recipe.method),
+                value: recipe.method
+            };
+        });
+    }
+
+    let activeRecipeTab = "V60";
     let showPrepSteps = false;
 </script>
 
@@ -218,26 +236,26 @@
         </div>
         <div class="divider"/>
         <div id="recipes" class="w-full text-2xl mb-4">recipes</div>
-        <Tabs bind:activeTabValue={activeRecipeTab} items={recipeTitles}/>
-        {#each recipes as recipe}
+        <Tabs bind:activeTabValue={activeRecipeTab} items={getRecipeTitles($coffeeResult.data.coffee.recipes)}/>
+        {#each $coffeeResult.data.coffee.recipes as recipe}
             {#if recipe.method === activeRecipeTab}
-                {#if recipe.method === "v60"}
+                {#if recipe.method === "V60"}
                     <table class="table table-compact w-1/3 mt-4 mb-0">                        
                         <tr class="border">
                             <td class="font-medium">Coffee Weight</td>
-                            <td>{recipe.variables?.coffee_weight}g</td>
+                            <td>{recipe.coffeeWeightGrams}g</td>
                         <tr>
                         <tr class="border">
                             <td class="font-medium">Grind Size</td>
-                            <td>{recipe.variables?.grind_size} microns</td>
+                            <td>{recipe.grindSizeMicrons} microns</td>
                         <tr>
                         <tr class="border">
                             <td class="font-medium">Water Weight</td>
-                            <td>{recipe.variables?.water_weight}g</td>
+                            <td>{recipe.waterWeightGrams}g</td>
                         <tr>
                         <tr class="border">
                             <td class="font-medium">Water Temperature</td>
-                            <td>{recipe.variables?.water_temperature}&#176;C / {Math.round(recipe.variables?.water_temperature * 1.8 + 32)}&#176;F</td>
+                            <td>{recipe.waterTempC}&#176;C / {Math.round(recipe.waterTempC * 1.8 + 32)}&#176;F</td>
                         <tr>
                     </table>
                     <div class="font-semibold mt-4 clickyStepTitle" on:click="{() => showPrepSteps = !showPrepSteps}">
@@ -246,10 +264,10 @@
                         <span class="font-normal ml-2 {showPrepSteps === true ? '' : 'hidden'}">[-]</span>
                     </div>                    
                     <ol class="{showPrepSteps === true ? '' : 'hidden'}">
-                        <li>Set the temperature of your kettle to {recipe.variables?.water_temperature}&#176;C / {Math.round(recipe.variables?.water_temperature * 1.8 + 32)}&#176;F.</li>
+                        <li>Set the temperature of your kettle to {recipe.waterTempC}&#176;C / {Math.round(recipe.waterTempC * 1.8 + 32)}&#176;F.</li>
                         <li>Insert filter paper into your V60. Flood your V60 with water and wait for it to drain.</li>
                         <li>Place cup on scale, and V60 on cup.</li>
-                        <li>Grind {recipe.variables?.coffee_weight}g of coffee to {recipe.variables?.grind_size} microns.</li>
+                        <li>Grind {recipe.coffeeWeightGrams}g of coffee to {recipe.grindSizeMicrons} microns.</li>
                         <li>Add ground coffee to V60, and shake the V60 to flatten out the coffee grounds.</li>
                         <li>Zero out scale.</li>
                     </ol>
@@ -265,19 +283,19 @@
                 <table class="table table-compact w-1/3 mt-4 mb-0">                        
                     <tr class="border">
                         <td class="font-medium">Coffee Weight</td>
-                        <td>{recipe.variables?.coffee_weight}g</td>
+                        <td>{recipe.coffeeWeightGrams}g</td>
                     <tr>
                     <tr class="border">
                         <td class="font-medium">Grind Size</td>
-                        <td>{recipe.variables?.grind_size} microns</td>
+                        <td>{recipe.grindSizeMicrons} microns</td>
                     <tr>
                     <tr class="border">
                         <td class="font-medium">Water Weight</td>
-                        <td>{recipe.variables?.water_weight}g</td>
+                        <td>{recipe.waterWeightGrams}g</td>
                     <tr>
                     <tr class="border">
                         <td class="font-medium">Water Temperature</td>
-                        <td>{recipe.variables?.water_temperature}&#176;C / {Math.round(recipe.variables?.water_temperature * 1.8 + 32)}&#176;F</td>
+                        <td>{recipe.waterTempC}&#176;C / {Math.round(recipe.waterTempC * 1.8 + 32)}&#176;F</td>
                     <tr>
                 </table>
 
@@ -287,14 +305,14 @@
                     <span class="font-normal ml-2 {showPrepSteps === true ? '' : 'hidden'}">[-]</span>
                 </div>
                 <ol class="{showPrepSteps === true ? '' : 'hidden'}">
-                    <li>Set the temperature of your kettle to {recipe.variables?.water_temperature}&#176;C / {Math.round(recipe.variables?.water_temperature * 1.8 + 32)}&#176;F.</li>
-                    <li>Grind {recipe.variables?.coffee_weight}g of coffee to {recipe.variables?.grind_size} microns.</li>
+                    <li>Set the temperature of your kettle to {recipe.waterTempC}&#176;C / {Math.round(recipe.waterTempC * 1.8 + 32)}&#176;F.</li>
+                    <li>Grind {recipe.coffeeWeightGrams}g of coffee to {recipe.grindSizeMicrons} microns.</li>
                     <li>Add ground coffee to Aeropress.</li>
                     <li>Zero out scale.</li>
                 </ol>   
                 <div class="font-semibold mt-4">Brew - {getName(recipe.name)}</div>
                 <ol>
-                    <li>Add {recipe.variables?.water_weight}g to Aeropress.</li>
+                    <li>Add {recipe.waterWeightGrams}g to Aeropress.</li>
                     <li>Swirl coffee and water.</li>
                     <li>Insert plunger to create a vacuum.</li>
                     <li>Wait 4 minutes.</li>
