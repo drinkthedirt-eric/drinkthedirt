@@ -35,7 +35,7 @@
         {#each $coffees.data.coffees as coffee}
             <tr class="hover:bg-base-200">
                 <a href="coffees/{coffee.id}" class="table-anchor">
-                    <td class="w-20 align-top p-0">
+                    <td class="w-60 align-top p-0">
                         <img src={getImageUrls(coffee.photos)[0]} alt={coffee.name} class="m-0"/>
                     </td>
                     <td class="align-top">
