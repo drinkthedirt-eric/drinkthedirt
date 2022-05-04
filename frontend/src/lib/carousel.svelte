@@ -45,8 +45,8 @@
     font-size: xx-large;
     border: 0px;
     border-radius: 0px;
-    box-shadow: 0;
-    text-shadow: 0;
+    box-shadow: none;
+    text-shadow: none;
     opacity: 1;
     cursor: pointer;
     transition: opacity 150ms ease, border 300ms ease-in-out;
