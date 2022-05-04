@@ -12,4 +12,4 @@
 <br>
 <div>Reach out to us at <EmailUsLink/> to schedule or learn more!</div>
 <br>
-<img src={classes} alt="Jacob pouring coffee!" class="m-0 h-96 lg:h-fit"/>
+<img src={classes} alt="Jacob pouring coffee!" class="m-0 object-cover"/>

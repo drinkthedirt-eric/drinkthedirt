@@ -16,4 +16,4 @@
 <br/>
 <div>Say hello anytime at <EmailUsLink /> or follow us on <InstagramLink /> for updates.</div>
 <br/>
-<img src={friends} alt="Friends <3<3>" class="m-0 h-96 lg:h-fit"/>
+<img src={friends} alt="Friends <3<3>" class="m-0 object-cover"/>
