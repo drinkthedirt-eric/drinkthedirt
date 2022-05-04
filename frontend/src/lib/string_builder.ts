@@ -1,3 +1,8 @@
+export function getPriceWeightDisplay(coffee: any): string {
+    const ounces: number = Math.ceil(coffee.priceTargetWeightGrams*0.035274);
+    return `${ounces} oz / ${coffee.priceTargetWeightGrams} g`;
+}
+
 export function getCategory(category: string): string {
     switch(category) {
         case "Spices":
