@@ -30,9 +30,9 @@
 {:else if $coffees.error}
     <p>Error: {$coffees.error.message}</p>
 {:else}
-    <table class="table table-compact border hover:bg-base-200">
+    <table class="table table-compact border">
         {#each $coffees.data.coffees as coffee}
-            <tr>
+            <tr class="hover:bg-base-200">
                 <a href="coffees/{coffee.id}" class="table-anchor">
                     <td class="w-20 align-top p-0">
                         <img src={sampleImage} alt={coffee.name} class="m-0"/>
