@@ -41,14 +41,13 @@
 {:else if $coffees.error}
     <p>Error: {$coffees.error.message}</p>
 {:else}
-    <table class="table table-compact border">
+    <div class="mt-4">
         {#each $coffees.data.coffees as coffee}
-            <tr class="hover:bg-base-200 border">
-                <a href="coffees/{coffee.id}" class="table-anchor">
-                    <td class="w-40 align-top p-0 md:w-60">
-                        <img src={getImageUrls(coffee.photos)[0]} alt={coffee.name} class="m-0 min-w-full"/>
-                    </td>
-                    <td class="align-top">
+        <div class="hover:bg-base-200">
+            <a href="coffees/{coffee.id}" class="table-anchor">
+                <div class="flex flex-row-reverse border md:flex-row">
+                    <img src={getImageUrls(coffee.photos)[0]} alt={coffee.name} class="m-0 w-48 object-cover wtf min-w-0"/>
+                    <div class="flex flex-col m-2">
                         <div class="font-light">{coffee.roaster.name}</div>
                         <div class="font-thin text-2xl">{coffee.name}</div>
                         <div class="mt-2 font-normal">
@@ -68,13 +67,18 @@
                                 <CoffeeProperty type="body">{coffee.body}</CoffeeProperty>
                                 <CoffeeProperty type="acidity">{coffee.acidity}</CoffeeProperty>
                             </div>
- 
-                        </div>
-                    </td>
-                </a>
-            </tr>
+    
+                        </div>                            
+                    </div>
+                </div>
+            </a>
+        </div>
         {/each}
-    </table>
+    </div>
 {/if}
 
-<!-- <div class="col-span-2 md:col-span-1"></div> -->
+<style>
+    /* .wtf {
+        min-width: 20em;
+    } */
+</style>
