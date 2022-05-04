@@ -136,6 +136,10 @@
         return getStepName(name);   
     }
 
+    function goToRecipe() {
+        document.getElementById('recipes').scrollIntoView();
+    }
+
     let activeRecipeTab = "v60";
     let showPrepSteps = false;
 </script>
@@ -150,13 +154,18 @@
             <div class="my-0 col-span-2 md:col-span-1">
                 <Carousel carouselId="hello" imageUrls={getImageUrls($coffeeResult.data.coffee.photos)}/>
             </div>
-            <div class="mt-3 col-span-2 md:col-span-1 md:mt-0 md:pl-8">
+            <div class="mt-2 col-span-2 grid place-items-center md:hidden">
+                <button class="btn bg-primary" on:click={goToRecipe}>
+                    Jump to Recipe!
+                </button>
+            </div>
+            <div class="mt-2 col-span-2 md:col-span-1 md:mt-0 md:pl-8">
                 {#if $coffeeResult.data.coffee.isFavorite}
-                    <div class="text-sm font-semibold leading-none text-white bg-indigo-600 p-2 border-round faveBadge">
+                    <div class="text-sm font-semibold leading-none text-white bg-indigo-600 p-2 border-round faveBadge mb-2">
                         Drink the Dirt Fave!
                     </div>                
                 {/if}
-                <div class="text-2xl leading-none mt-2">
+                <div class="text-2xl leading-none">
                     {$coffeeResult.data.coffee.roaster.name}
                 </div>
                 <div class="text-3xl md:text-4xl font-semibold leading-none">
@@ -182,6 +191,11 @@
                 </CoffeeProperty>
             </div>
         </div>
+        <div class="mt-2 hidden md:flex justify-center items-center">
+            <button class="btn bg-primary" on:click={goToRecipe}>
+                Jump to Recipe!
+            </button>
+        </div>
         <div class="divider"/>
         <div class="w-full text-2xl">from drink the dirt</div>
         <div class="grid grid-cols-4 gap-1 mt-4">
@@ -203,7 +217,7 @@
             </div>
         </div>
         <div class="divider"/>
-        <div class="w-full text-2xl mb-4">recipes</div>
+        <div id="recipes" class="w-full text-2xl mb-4">recipes</div>
         <Tabs bind:activeTabValue={activeRecipeTab} items={recipeTitles}/>
         {#each recipes as recipe}
             {#if recipe.method === activeRecipeTab}
