@@ -1,4 +1,23 @@
-import { buildQueryFromSelectionSet } from "@apollo/client/utilities";
+export function getCategory(category: string): string {
+    switch(category) {
+        case "Spices":
+            return "Spice";
+        case "NutsChocolate":
+            return "Nuts & Chocolate";
+        case "Candy":
+            return "Candy"
+        case "Floral":
+            return "Floral"
+        case "Fruity":
+            return "Fruity"
+        case "Acidic":
+            return "Fruity"
+        case "FermentationFunk":
+            return "Funky Fermentation"        
+    } 
+
+    return "UNKNOWN"
+}
 
 export function getMethod(method: string): string {
     switch(method) {

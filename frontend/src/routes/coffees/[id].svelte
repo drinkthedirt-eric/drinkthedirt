@@ -5,7 +5,7 @@
     import CoffeeProperty from "../../lib/coffee_property.svelte";
     import Carousel from "../../lib/carousel.svelte";
     import Tabs from "$lib/components/tabs.svelte"
-    import { getName, getMethod, getStep, getStepName } from "$lib/recipe_builder"
+    import { getCategory, getName, getMethod, getStep, getStepName } from "$lib/string_builder"
 
     const getPriceWeightDisplay = (coffee: any): string => {
         const ounces: number = Math.ceil(coffee.priceTargetWeightGrams*0.035274);
@@ -145,7 +145,6 @@
     <p>Error: {$coffeeResult.error.message}</p>
 {:else}
     <div>
-
         <div class="grid grid-cols-2 gap-4 w-full max-w-7xl md:card-side rounded-none">
             <div class="my-0 col-span-2 md:col-span-1">
                 <Carousel carouselId="hello" imageUrls={getImageUrls($coffeeResult.data.coffee.photos)}/>
@@ -187,7 +186,7 @@
             <div class="col-span-4 md:col-span-1 md:order-first grow-0">
                 <div class="grid grid-cols-2">
                     <div class="col-span-1 md:col-span-2">
-                        <CoffeeProperty type="flavor category">{$coffeeResult.data.coffee.flavorCategories.join(", ")}</CoffeeProperty>
+                        <CoffeeProperty type="flavor category">{$coffeeResult.data.coffee.flavorCategories.map(x => getCategory(x)).join(", ")}</CoffeeProperty>
                         <CoffeeProperty type="sweetness">{$coffeeResult.data.coffee.sweetness}</CoffeeProperty>
                     </div>
                     <div class="col-span-1 md:col-span-2">
