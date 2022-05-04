@@ -3,7 +3,7 @@ export function getCategory(category: string): string {
         case "Spices":
             return "Spice";
         case "NutsChocolate":
-            return "Nuts & Chocolate";
+            return "Nuts & Choc";
         case "Candy":
             return "Candy"
         case "Floral":

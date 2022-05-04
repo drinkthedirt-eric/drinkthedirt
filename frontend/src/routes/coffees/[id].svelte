@@ -2,8 +2,8 @@
     import { page } from "$app/stores";
     import { gql } from "@apollo/client/core/index.js";
     import { query } from "$lib/svelte-apollo-sad/svelte-apollo";;
-    import CoffeeProperty from "../../lib/coffee_property.svelte";
-    import Carousel from "../../lib/carousel.svelte";
+    import CoffeeProperty from "$lib/coffee_property.svelte";
+    import Carousel from "$lib/carousel.svelte";
     import Tabs from "$lib/components/tabs.svelte"
     import { getCategory, getName, getMethod, getStep, getStepName } from "$lib/string_builder"
 
