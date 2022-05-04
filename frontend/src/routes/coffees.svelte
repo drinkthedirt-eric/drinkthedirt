@@ -44,42 +44,38 @@
 {:else}
     <div class="mt-4">
         {#each $coffees.data.coffees as coffee}
-        <div class="hover:bg-base-200">
-            <a href="coffees/{coffee.id}" class="table-anchor">
-                <div class="flex flex-row-reverse border md:flex-row">
-                    <img src={getImageUrls(coffee.photos)[0]} alt={coffee.name} class="m-0 w-48 object-cover wtf min-w-0"/>
-                    <div class="flex flex-col m-2">
-                        <div class="font-normal">{coffee.roaster.name}</div>
-                        <div class="font-semibold text-2xl">{coffee.name}</div>
-                        <div class="mt-2 font-light">
-                            {coffee.country} - {coffee.location}
-                        </div>
-
-                        <div class="mt-2">
-                            <div class="font-thin">${coffee.price.toFixed(2)} - {getPriceWeightDisplay(coffee)}</div>
-                        </div>
-
-                        <div class="grid grid-cols-4 gap-x-4 gap-y-2 font-thin mt-2">
-                            <div class="col-span-4 md:col-span-1">
-                                <CoffeePropertyCard type="flavor category">{coffee.flavorCategories.map(x => getCategory(x)).join(", ")}</CoffeePropertyCard>
+            <div class="hover:bg-base-200">
+                <a href="coffees/{coffee.id}" class="table-anchor">
+                    <div class="flex flex-row-reverse justify-end md:justify-start md:flex-row border">
+                        <img src={getImageUrls(coffee.photos)[0]} alt={coffee.name} class="m-0 w-24 md:w-48 object-cover"/>
+                        <div class="flex flex-col m-2 flex-grow">
+                            <div class="font-normal">{coffee.roaster.name}</div>
+                            <div class="font-semibold text-2xl">{coffee.name}</div>
+                            <div class="mt-2 font-light">
+                                {coffee.country} - {coffee.location}
                             </div>
-                            <div class="flex flex-row gap-x-4">
-                                <CoffeePropertyCard type="sweetness">{coffee.sweetness}</CoffeePropertyCard>
-                                <CoffeePropertyCard type="body">{coffee.body}</CoffeePropertyCard>
-                                <CoffeePropertyCard type="acidity">{coffee.acidity}</CoffeePropertyCard>
+
+                            <div class="mt-2">
+                                <div class="font-thin">${coffee.price.toFixed(2)} - {getPriceWeightDisplay(coffee)}</div>
                             </div>
-    
-                        </div>                            
+
+                            <div class="grid grid-cols-4 gap-x-4 gap-y-2 font-thin mt-2">
+                                <div class="col-span-4 md:col-span-1">
+                                    <CoffeePropertyCard type="flavor category">{coffee.flavorCategories.map(x => getCategory(x)).join(", ")}</CoffeePropertyCard>
+                                </div>
+                                <div class="flex flex-row gap-x-4">
+                                    <CoffeePropertyCard type="sweetness">{coffee.sweetness}</CoffeePropertyCard>
+                                    <CoffeePropertyCard type="body">{coffee.body}</CoffeePropertyCard>
+                                    <CoffeePropertyCard type="acidity">{coffee.acidity}</CoffeePropertyCard>
+                                </div>
+                            </div>                            
+                        </div>
                     </div>
-                </div>
-            </a>
-        </div>
+                </a>
+            </div>
         {/each}
     </div>
 {/if}
 
 <style>
-    /* .wtf {
-        min-width: 20em;
-    } */
 </style>
