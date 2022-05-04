@@ -5,7 +5,7 @@
 <script lang="ts">
     import { gql } from "@apollo/client/core/index.js";
     import { query } from "$lib/svelte-apollo-sad/svelte-apollo";
-    import sampleImage from "./sample_coffee.png";
+    import { getImageUrls } from "$lib/images";
 
     const GET_COFFEES_QUERY = gql`
         query {
@@ -15,6 +15,7 @@
                 roaster {
                     name
                 }
+                photos
             }
         }
     `;
@@ -35,7 +36,7 @@
             <tr class="hover:bg-base-200">
                 <a href="coffees/{coffee.id}" class="table-anchor">
                     <td class="w-20 align-top p-0">
-                        <img src={sampleImage} alt={coffee.name} class="m-0"/>
+                        <img src={getImageUrls(coffee.photos)[0]} alt={coffee.name} class="m-0"/>
                     </td>
                     <td class="align-top">
                         <div class="font-light">{coffee.roaster.name}</div>
