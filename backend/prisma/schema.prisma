@@ -85,6 +85,7 @@ enum FlavorCategory {
   Fruity
   Acidic
   FerementationFunk
+  Roasted
 }
 
 enum FlavorProfileLevel {
