@@ -19,6 +19,8 @@ export function getCategory(category: string): string {
             return "Fruity"
         case "FermentationFunk":
             return "Funky Fermentation"        
+        case "Roasted":
+            return "Roasted"
     } 
 
     return "UNKNOWN"
