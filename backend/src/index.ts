@@ -19,6 +19,9 @@ import {
  } from "@generated/type-graphql";
 
 async function main() {
+
+  // TODO proper security
+  // https://www.graphql-yoga.com/docs/features/graphiql
   const schema = await buildSchema({
       resolvers: [
         Coffee,
@@ -36,7 +39,10 @@ async function main() {
       emitSchemaFile: path.resolve(__dirname, "schema.gql"),
   });
 
-  const server = createServer({ schema, context: createContext });
+  const server = createServer({ 
+    schema,
+    context: createContext
+  });
   const app = express();
 
   app.use('/graphql', server);
