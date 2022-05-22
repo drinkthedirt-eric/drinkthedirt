@@ -63,6 +63,8 @@ model Recipe {
   coffeeWeightGrams Int
   waterWeightGrams Int
   grindSizeMicrons Int
+  grind Grind?
+  grind_odessp Float?
   waterTempC Int
   steps Json[]
 }
@@ -70,6 +72,7 @@ model Recipe {
 enum RecipeName {
     TwoPour
     ThreePour
+    Standard
 }
 
 enum BrewMethod {
@@ -92,4 +95,13 @@ enum FlavorProfileLevel {
   Low
   Medium
   High
+}
+
+enum Grind {
+  VeryFine
+  Fine
+  MediumFine
+  Medium
+  CoarseMedium
+  Coarse
 }

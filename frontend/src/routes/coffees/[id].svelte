@@ -55,7 +55,7 @@
                     name
                     coffeeWeightGrams
                     waterWeightGrams
-                    grindSizeMicrons
+                    grind                    
                     waterTempC
                     steps
                 }
@@ -64,65 +64,6 @@
     `;
 
     const coffeeResult = query(GET_COFFEE_QUERY, { variables: { where: { id: +$page.params.id }}});
-    let recipes = [
-        {
-            "method": "v60",
-            "variables": {
-                coffee_weight: 15,
-                water_weight: 225,
-                water_temperature: 97,
-                grind_size: 200
-            },
-            "name": "2pour",
-            "steps": [
-                {
-                    name: "bloom",
-                    weight: 65,
-                    start_timestamp: 0,
-                    end_timestamp: 10,
-
-                },
-                {
-                    name: "swirl",
-                },
-                {
-                    name: "pour",
-                    weight: 80,
-                    start_timestamp: 30,
-                    end_timestamp: 40,
-                },
-                {
-                    name: "pour",
-                    weight: 80,
-                    start_timestamp: 105,
-                    end_timestamp: 115,
-                },
-                {
-                    name: "stir",
-                },
-                {
-                    name: "wait",
-                },
-            ]
-        },
-        {
-            "method": "aeropress",
-            "variables": {
-                coffee_weight: 12,
-                water_weight: 200,
-                water_temperature: 97,
-                grind_size: 200
-            },
-            "name": "standard"
-        }
-    ];
-
-    const recipeTitles = recipes.map(recipe => {
-        return {
-            label: getMethod(recipe.method),
-            value: recipe.method
-        };
-    });
 
     let pourStepCount = 0;
 
@@ -251,7 +192,7 @@
                         <tr>
                         <tr class="border">
                             <td class="font-medium">Grind Size</td>
-                            <td>{recipe.grindSizeMicrons} microns</td>
+                            <td>{recipe.grind}</td>
                         <tr>
                         <tr class="border">
                             <td class="font-medium">Water Weight</td>
@@ -291,7 +232,7 @@
                     <tr>
                     <tr class="border">
                         <td class="font-medium">Grind Size</td>
-                        <td>{recipe.grindSizeMicrons} microns</td>
+                        <td>{recipe.grind}</td>
                     <tr>
                     <tr class="border">
                         <td class="font-medium">Water Weight</td>
