@@ -41,7 +41,7 @@
 <div class="font-bold text-4xl pb-2">DRINK THE DIRT</div>
 <div>Find your next favorite coffee and brew it perfectly with our catalog of specialty coffee reviews and recipes. We review and create individual recipes for every coffee to help you get the most out of your brew.</div>
 <br/>
-<div>We're very new. Join our <DiscordLink /> community or drop us a note at <EmailUsLink /> to talk coffee, debug your brew, or give us feedback. Follow us on <InstagramLink/> for updates!</div>
+<div>We're very new. Join our <DiscordLink /> community or drop us a note at <EmailUsLink /> to talk coffee, troubleshoot your brew, or give us feedback. Follow us on <InstagramLink/> for updates!</div>
 
 <div class="divider" />
 

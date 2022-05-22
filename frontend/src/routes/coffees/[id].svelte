@@ -6,6 +6,7 @@
     import Carousel from "$lib/carousel.svelte";
     import Tabs from "$lib/components/tabs.svelte"
     import { getCategory, getName, getMethod, getStep, getStepName } from "$lib/string_builder"
+    import EmailUsLink from "$lib/links/email_us_link.svelte";
 
     const getPriceWeightDisplay = (coffee: any): string => {
         const ounces: number = Math.ceil(coffee.priceTargetWeightGrams*0.035274);
@@ -237,7 +238,7 @@
         <div class="divider"/>
         <div id="recipes" class="w-full text-2xl">recipes</div>
         <div class="mb-4">
-            Dig into the why's of this recipe with our <a class="link link-primary" href="/brewing">recipe guide</a>.
+            Dig into the why's of this recipe with our <a class="link link-primary" href="/brewing">recipe guide</a>. We'd love to help you get the most out of this recipe. Email us at <EmailUsLink /> to schedule a troubleshooting session!
         </div>
         <Tabs bind:activeTabValue={activeRecipeTab} items={getRecipeTitles($coffeeResult.data.coffee.recipes)}/>
         {#each $coffeeResult.data.coffee.recipes as recipe}
