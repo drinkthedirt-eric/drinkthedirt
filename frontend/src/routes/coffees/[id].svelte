@@ -235,7 +235,10 @@
             </div>
         </div>
         <div class="divider"/>
-        <div id="recipes" class="w-full text-2xl mb-4">recipes</div>
+        <div id="recipes" class="w-full text-2xl">recipes</div>
+        <div class="mb-4">
+            Dig into the why's of this recipe with our <a class="link link-primary" href="/brewing">recipe guide</a>.
+        </div>
         <Tabs bind:activeTabValue={activeRecipeTab} items={getRecipeTitles($coffeeResult.data.coffee.recipes)}/>
         {#each $coffeeResult.data.coffee.recipes as recipe}
             {#if recipe.method === activeRecipeTab}
