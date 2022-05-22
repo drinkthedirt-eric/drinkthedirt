@@ -36,7 +36,7 @@
             <li><a href="/">Home</a></li>
             <li><a href="/coffees">Coffees</a></li>
             <li><a href="/brewing">Brewing</a></li>
-            <li><a href="/classes">Tastings & Classes</a></li>
+            <li><a href="/classes">Events & Workshops</a></li>
             <li><a href="/community">Community</a></li>
         </ul>
       </div>
