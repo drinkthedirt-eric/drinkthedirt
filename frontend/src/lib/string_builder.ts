@@ -83,12 +83,31 @@ export function getStep(name: string, start_timestamp: number, end_timestamp: nu
         case "pour":
             return `Add water to ${weight}g. [~${start_time_string}-${end_time_string}]`;
         case "stir":
-            return `Stir coffee bed to start whirpool.`;
+            return `Stir coffee bed 4 times quickly.`;
         case "wait":
             return `Wait for all of the water to drain.`;
     }
 
-    return "UNKNOWN"
+    return "UNKNOWN";
+}
+
+export function getGrindSize(grind: string): string {
+    switch(grind) {
+        case "VeryFine":
+            return "Very Fine";
+        case "Fine":
+            return "Fine";
+        case "MediumFine":
+            return "Medium Fine";
+        case "Medium":
+            return "Medium";
+        case "CoarseMedium":
+            return "Coarse Medium";
+        case "Coarse":
+            return "Coarse";
+    }
+
+    return "UNKNOWN";
 }
 
 function getTimeAsString(timestamp: number): string {

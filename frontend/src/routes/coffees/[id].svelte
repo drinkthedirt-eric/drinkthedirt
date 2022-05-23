@@ -5,7 +5,7 @@
     import CoffeeProperty from "$lib/coffee_property.svelte";
     import Carousel from "$lib/carousel.svelte";
     import Tabs from "$lib/components/tabs.svelte"
-    import { getCategory, getName, getMethod, getStep, getStepName } from "$lib/string_builder"
+    import { getCategory, getName, getMethod, getStep, getStepName, getGrindSize } from "$lib/string_builder"
     import EmailUsLink from "$lib/links/email_us_link.svelte";
 
     const getPriceWeightDisplay = (coffee: any): string => {
@@ -192,7 +192,7 @@
                         <tr>
                         <tr class="border">
                             <td class="font-medium">Grind Size</td>
-                            <td>{recipe.grind} [<a class="link link-primary" href="/brewing#grind">?</a>]</td>
+                            <td>{getGrindSize(recipe.grind)} [<a class="link link-primary" href="/brewing#grind">?</a>]</td>
                         <tr>
                         <tr class="border">
                             <td class="font-medium">Water Weight</td>
@@ -232,7 +232,7 @@
                     <tr>
                     <tr class="border">
                         <td class="font-medium">Grind Size</td>
-                        <td>{recipe.grind}</td>
+                        <td>{getGrindSize(recipe.grind)} [<a class="link link-primary" href="/brewing#grind">?</a>]</td>
                     <tr>
                     <tr class="border">
                         <td class="font-medium">Water Weight</td>
