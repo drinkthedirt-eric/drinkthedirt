@@ -79,7 +79,7 @@ export function getStep(name: string, start_timestamp: number, end_timestamp: nu
         case "bloom":
             return `Add water to ${weight}g. [~${start_time_string}-${end_time_string}]`;
         case "swirl":
-            return `Swirl brewer to even out coffee bed.`;
+            return `Swirl brewer to saturate all of the coffee.`;
         case "pour":
             return `Add water to ${weight}g. [~${start_time_string}-${end_time_string}]`;
         case "stir":

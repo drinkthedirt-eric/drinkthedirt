@@ -179,7 +179,7 @@
         <div class="divider"/>
         <div id="recipes" class="w-full text-2xl">recipes</div>
         <div class="mb-4">
-            Dig into the why's of this recipe with our <a class="link link-primary" href="/brewing">recipe guide</a>. We'd love to help you get the most out of this recipe. Email us at <EmailUsLink /> to schedule a troubleshooting session!
+            Dig into the why's of each recipe with our in-depth <a class="link link-primary" href="/brewing">recipe guide</a>. We'd love to help you get the most out of this recipe. Email us at <EmailUsLink /> to schedule a troubleshooting session!
         </div>
         <Tabs bind:activeTabValue={activeRecipeTab} items={getRecipeTitles($coffeeResult.data.coffee.recipes)}/>
         {#each $coffeeResult.data.coffee.recipes as recipe}
@@ -192,7 +192,7 @@
                         <tr>
                         <tr class="border">
                             <td class="font-medium">Grind Size</td>
-                            <td>{recipe.grind}</td>
+                            <td>{recipe.grind} [<a class="link link-primary" href="/brewing#grind">?</a>]</td>
                         <tr>
                         <tr class="border">
                             <td class="font-medium">Water Weight</td>
