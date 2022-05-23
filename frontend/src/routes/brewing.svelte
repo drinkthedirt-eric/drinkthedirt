@@ -39,53 +39,53 @@ import EmailUsLink from "$lib/links/email_us_link.svelte";
     </tr>
     <tr>
         <td class="border" rowspan="3">Fine</td>
-        <td class="border" rowspan="3">Sugar</td>
-        <td class="border">3.0</td>
+        <td class="border" rowspan="3"></td>
+        <td class="border">4.0</td>
     <tr>
-        <td class="border">3.1</td>
+        <td class="border">4.1</td>
     </tr>    
     <tr>
-        <td class="border">3.2</td>
+        <td class="border">4.2</td>
     </tr>
     <tr>
         <td class="border" rowspan="3">Medium Fine</td>
         <td class="border" rowspan="3">Table Salt</td>
-        <td class="border">3.0</td>
+        <td class="border">5.0</td>
     <tr>
-        <td class="border">3.1</td>
+        <td class="border">5.1</td>
     </tr>    
     <tr>
-        <td class="border">3.2</td>
+        <td class="border">5.2</td>
     </tr>
     <tr>
         <td class="border" rowspan="3">Medium</td>
         <td class="border" rowspan="3"></td>
-        <td class="border">3.0</td>
+        <td class="border">6.0</td>
     <tr>
-        <td class="border">3.1</td>
+        <td class="border">6.1</td>
     </tr>    
     <tr>
-        <td class="border">3.2</td>
+        <td class="border">6.2</td>
     </tr>
     <tr>
         <td class="border" rowspan="3">Coarse Medium</td>
         <td class="border" rowspan="3"></td>
-        <td class="border">3.0</td>
+        <td class="border">7.0</td>
     <tr>
-        <td class="border">3.1</td>
+        <td class="border">7.1</td>
     </tr>    
     <tr>
-        <td class="border">3.2</td>
+        <td class="border">7.2</td>
     </tr>
     <tr>
         <td class="border" rowspan="3">Coarse</td>
         <td class="border" rowspan="3">Kosher Salt</td>
-        <td class="border">3.0</td>
+        <td class="border">8.0</td>
     <tr>
-        <td class="border">3.1</td>
+        <td class="border">8.1</td>
     </tr>    
     <tr>
-        <td class="border">3.2</td>
+        <td class="border">8.2</td>
     </tr>
 </table>
 <div class="text-xl pb-1 underline">Coffee: Water Ratio</div>
