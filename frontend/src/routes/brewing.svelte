@@ -89,7 +89,7 @@ import EmailUsLink from "$lib/links/email_us_link.svelte";
     </tr>
 </table>
 <div class="text-xl pb-1 underline">Coffee: Water Ratio</div>
-<div class="pb-2">Usually we brew between 1:13 and 1:17. This ratio refers to the amount of water you add to ground coffee. A ratio of 1:16 means using 16g for every 1g of coffee in your brew. Longer ratios will increase extraction but we might percieve as weaker due to dilution.</div>
+<div class="pb-2">Usually we brew between 1:13 and 1:17. This ratio refers to the amount of water you add to ground coffee. A ratio of 1:16 means using 16g of water for every 1g of coffee in your brew. Longer ratios will increase extraction but might be percieved as weaker due to dilution.</div>
 <div class="text-xl pb-1 underline">Agitation</div>
 <div class="pb-2">We agitate the coffee bed with stirring and pouring. We like to adjust our pouring technique instead of adjusting our stirring. Extraction will increase with higher pouring and more frequent pours.</div>
 <br>
@@ -100,26 +100,26 @@ import EmailUsLink from "$lib/links/email_us_link.svelte";
 <div class="pb-2">
     <div>The brew is over-extracted. Try:</div>
     <ul>
-        <li>Grind courser</li>
-        <li>Reduce agitation</li>
-        <li>Lower the water temperature</li>
+        <li>Grinding courser</li>
+        <li>Reducing agitation</li>
+        <li>Lowering the water temperature</li>
     </ul>
 </div>
 <div class="text-xl pb-1 underline">Sour</div>
 <div class="pb-2">
     <div>The brew is under-extracted. Try:</div>
     <ul>
-        <li>Grind finder</li>
-        <li>Increase agitation</li>
-        <li>Increase the water temperature</li>
+        <li>Grinding finder</li>
+        <li>Increasing agitation</li>
+        <li>Increasing the water temperature</li>
     </ul>
 </div>
 <div class="text-xl pb-1 underline">Sour & Bitter</div>
 <div class="pb-2">
     <div>The brew is unevenly extracted, some of the coffee is over-extracted and some of the coffee is over-extracted. Try:</div>
     <ul>
-        <li>Grind courser</li>
-        <li>Increase agitation</li>
-        <li>Remember to pour in circles over the coffee grounds</li>
+        <li>Grinding courser</li>
+        <li>Increasing agitation</li>
+        <li>Remembering to pour in circles, directly onto the coffee grounds</li>
     </ul>
 </div>
