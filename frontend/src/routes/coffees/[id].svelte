@@ -49,6 +49,7 @@
                 body
                 acidity
                 ourTastingNotes
+                ourReview
                 isFavorite
                 recipes {
                     method
@@ -160,7 +161,7 @@
         <div class="w-full text-2xl">from drink the dirt</div>
         <div class="grid grid-cols-4 gap-1 mt-4">
             <div class="col-span-4 md:col-span-3">
-                <CoffeeProperty type="our review">{$coffeeResult.data.coffee.roasterDescription}</CoffeeProperty>            
+                <CoffeeProperty type="our review">{$coffeeResult.data.coffee.ourReview}</CoffeeProperty>            
                 <CoffeeProperty type="our impressions">{$coffeeResult.data.coffee.ourTastingNotes.join(", ")}</CoffeeProperty>
             </div>
             <div class="col-span-4 md:col-span-1 md:order-first grow-0">
