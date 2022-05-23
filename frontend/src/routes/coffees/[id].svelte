@@ -224,7 +224,7 @@
                     </ol>
                     <div class="mt-4">Drink your coffee! It will taste best after its cooled, at around {60}&#176;C / {Math.round(60 * 1.8 + 32)}&#176;F.</div>
                 {/if}
-                {#if recipe.method === "aeropress"}
+                {#if recipe.method === "Aeropress"}
                 <table class="table table-compact w-1/3 mt-4 mb-0">                        
                     <tr class="border">
                         <td class="font-medium">Coffee Weight</td>
