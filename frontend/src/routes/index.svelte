@@ -39,7 +39,7 @@
 </script>
 
 <div class="font-bold text-4xl pb-2">DRINK THE DIRT</div>
-<div>Find your next favorite coffee and brew it perfectly. We recommend a highly curated selection from the best direct-trade roasters, and create recipes for each coffee.</div>
+<div>Find your next favorite coffee and brew it perfectly. We recommend a highly curated selection from the best direct-trade roasters, and provide super detailed tasting notes and recipes.</div>
 <br/>
 
 <div>Email us at <EmailUsLink /> to schedule a FREE Zoom workshop or suggest coffees for dial-in. Follow us on <DiscordLink /> and <InstagramLink/> for new recommendations!</div>
