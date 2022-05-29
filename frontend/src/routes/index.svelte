@@ -42,7 +42,7 @@
 <div class="font-medium text-2xl pb-4">curated coffees from unique roasters</div>
 <div>Detailed notes and recipes on our favorite coffees. Schedule a <span class="font-medium">FREE</span> <a class="link link-primary" href="mailto:hello@drinkthedirt.coffee">Zoom workshop</a> with us to step up your brew game.</div>
 <br/>
-Follow us on <DiscordLink /> and <InstagramLink/> to get the latest recommendations!
+<!-- Follow us on <DiscordLink /> and <InstagramLink/> to get the latest recommendations! -->
 
 
 <div class="divider" />
