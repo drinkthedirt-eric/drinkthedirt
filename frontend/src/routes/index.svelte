@@ -42,7 +42,7 @@
 <div>Find your next favorite coffee and brew it perfectly. We recommend a highly curated selection from the best direct-trade roasters, and create recipes for each coffee.</div>
 <br/>
 
-<div>Email us at <EmailUsLink /> to schedule a FREE Zoom consultation or suggest coffees for dial-in. Follow us on <DiscordLink /> and <InstagramLink/> for new recommendations!</div>
+<div>Email us at <EmailUsLink /> to schedule a FREE Zoom workshop or suggest coffees for dial-in. Follow us on <DiscordLink /> and <InstagramLink/> for new recommendations!</div>
 
 
 <div class="divider" />
