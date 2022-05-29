@@ -39,13 +39,14 @@
 </script>
 
 <div class="font-bold text-4xl pb-2">DRINK THE DIRT</div>
-<div>Find your next favorite coffee and brew it perfectly with our catalog of specialty coffee reviews and recipes. We review and create individual recipes for every coffee to help you get the most out of your brew.</div>
+<div>Find your next favorite coffee and brew it perfectly. We recommend a highly curated selection from the best direct-trade roasters, and create recipes for each coffee.</div>
 <br/>
-<div>We're very new. Join our <DiscordLink /> community or drop us a note at <EmailUsLink /> to talk coffee, troubleshoot your brew, or give us feedback. Follow us on <InstagramLink/> for updates!</div>
+
+<div>Email us at <EmailUsLink /> to schedule a FREE Zoom consultation or suggest coffees for dial-in. Follow us on <DiscordLink /> and <InstagramLink/> for new recommendations!</div>
+
 
 <div class="divider" />
-
-<div class="font-bold text-2xl">Recent Reviews and Recipes</div>
+<div class="font-bold text-2xl">Recent Recommendations</div>
 <a class="link link-primary" href="/coffees">See all the coffees!</a>    
 {#if $coffees.loading}
     <p>Loading...</p>

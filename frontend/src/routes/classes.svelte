@@ -1,5 +1,5 @@
 <svelte:head>
-    <title>Tastings & Workshops</title>
+    <title>Events & Workshops</title>
 </svelte:head>
 
 <script lang="ts">
