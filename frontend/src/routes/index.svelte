@@ -38,11 +38,11 @@
     const coffees = query(GET_COFFEES_QUERY);
 </script>
 
-<div class="font-bold text-4xl pb-2">DRINK THE DIRT</div>
-<div>Find your next favorite coffee and brew it perfectly. We recommend a highly curated selection from the best direct-trade roasters, and provide super detailed tasting notes and recipes.</div>
+<div class="font-bold text-4xl">DRINK THE DIRT</div>
+<div class="font-medium text-2xl pb-4">curated coffees from unique roasters</div>
+<div>Super detailed notes and recipes on our favorite coffees. Schedule a <span class="font-medium">FREE</span> <a class="link link-primary" href="mailto:hello@drinkthedirt.coffee">Zoom workshop</a> with us to step up your brew game.</div>
 <br/>
-
-<div>Email us at <EmailUsLink /> to schedule a FREE Zoom workshop or suggest coffees for dial-in. Follow us on <DiscordLink /> and <InstagramLink/> for new recommendations!</div>
+Follow us on <DiscordLink /> and <InstagramLink/> to get the latest recommendations!
 
 
 <div class="divider" />
