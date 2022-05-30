@@ -42,7 +42,7 @@
 <div class="font-medium text-2xl pb-4">curated flights of really special coffees</div>
 <div>Get themed flights of three coffees we love, with notes and recipes to brew it perfectly at home.</div>
 <br/>
-<div><a class="link link-primary" href="mailto:hello@drinkthedirt.coffee">Sign up for the next drop!</a></div>
+<div><a class="link link-primary" href="mailto:hello@drinkthedirt.coffee">Sign up for the next flight!</a></div>
 <br/>
 <!-- Follow us on <DiscordLink /> and <InstagramLink/> to get the latest recommendations! -->
 
