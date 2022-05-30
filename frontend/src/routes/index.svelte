@@ -48,7 +48,8 @@
 
 
 <div class="divider" />
-<div class="font-bold text-2xl">Our current flight!</div>
+<div class="text-sm">Our Current Flight</div>
+<div class="font-bold text-2xl">Anchorhead Deep Dive</div>
 {#if $coffees.loading}
     <p>Loading...</p>
 {:else if $coffees.error}

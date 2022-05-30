@@ -8,6 +8,7 @@
     import { getImageUrls } from "$lib/images";
     import { getCategory, getPriceWeightDisplay } from "$lib/string_builder";
     import CoffeePropertyCard from "$lib/coffee_property_card.svelte"
+import Brewing from "./brewing.svelte";
 
     const GET_COFFEES_QUERY = gql`
         query {
@@ -44,7 +45,7 @@
     <p>Error: {$coffees.error.message}</p>
 {:else}
     <div class="mt-4">
-        {#each $coffees.data.coffees as coffee}
+        {#each $coffees.data.coffees.filter(x => ![1, 2, 3, 4, 5, 6, 7].includes(x.id)) as coffee}
             <div class="hover:bg-base-200">
                 <a href="coffees/{coffee.id}" class="table-anchor">                    
                     <div class="flex border">
