@@ -14,7 +14,7 @@
 
     const GET_COFFEES_QUERY = gql`
         query {
-            coffees(orderBy: {createdAt: desc}, take: 10) {
+            coffees(orderBy: {createdAt: desc}, take: 3) {
                 id
                 name
                 roaster {
@@ -39,15 +39,16 @@
 </script>
 
 <div class="font-bold text-4xl">DRINK THE DIRT</div>
-<div class="font-medium text-2xl pb-4">curated coffees from unique roasters</div>
-<div>Detailed notes and recipes on our favorite coffees. Schedule a <span class="font-medium">FREE</span> <a class="link link-primary" href="mailto:hello@drinkthedirt.coffee">Zoom workshop</a> with us to step up your brew game.</div>
+<div class="font-medium text-2xl pb-4">curated flights of really special coffees</div>
+<div>Get themed flights of three coffees we love, with notes and recipes to brew it perfectly at home.</div>
+<br/>
+<div><a class="link link-primary" href="mailto:hello@drinkthedirt.coffee">Sign up for the next drop!</a></div>
 <br/>
 <!-- Follow us on <DiscordLink /> and <InstagramLink/> to get the latest recommendations! -->
 
 
 <div class="divider" />
-<div class="font-bold text-2xl">Recent Recommendations</div>
-<a class="link link-primary" href="/coffees">See all the coffees!</a>    
+<div class="font-bold text-2xl">Our current flight!</div>
 {#if $coffees.loading}
     <p>Loading...</p>
 {:else if $coffees.error}
