@@ -39,16 +39,16 @@
 </script>
 
 <div class="font-bold text-4xl">DRINK THE DIRT</div>
-<div class="font-medium text-2xl pb-4">curated flights of really special coffees</div>
-<div>Get themed flights of three coffees we love, with notes and recipes to brew it perfectly at home.</div>
+<div class="font-medium text-2xl pb-4">single servings of really special coffees</div>
+<div>Get single servings of three coffees we love, with notes and recipes to brew it perfectly at home.</div>
 <br/>
-<div><a class="link link-primary" href="mailto:hello@drinkthedirt.coffee">Sign up for the next flight!</a></div>
+<div><a class="link link-primary" href="mailto:hello@drinkthedirt.coffee">Sign up for the next delivery!</a></div>
 <br/>
 <!-- Follow us on <DiscordLink /> and <InstagramLink/> to get the latest recommendations! -->
 
 
 <div class="divider" />
-<div class="text-sm">Our Current Flight</div>
+<div class="text-sm">Latest Coffees</div>
 <div class="font-bold text-2xl">Anchorhead Deep Dive</div>
 {#if $coffees.loading}
     <p>Loading...</p>
