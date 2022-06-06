@@ -213,7 +213,7 @@
                         <li>Set the temperature of your kettle to {recipe.waterTempC}&#176;C / {Math.round(recipe.waterTempC * 1.8 + 32)}&#176;F.</li>
                         <li>Insert filter paper into your V60. Flood your V60 with water and wait for it to drain.</li>
                         <li>Place cup on scale, and V60 on cup.</li>
-                        <li>Grind {recipe.coffeeWeightGrams}g of coffee to {recipe.grindSizeMicrons} microns.</li>
+                        <li>Grind {recipe.coffeeWeightGrams}g of coffee to {getGrindSize(recipe.grind)} [<a class="link link-primary" href="/brewing#grind">?</a>].</li>
                         <li>Add ground coffee to V60, and shake the V60 to flatten out the coffee grounds.</li>
                         <li>Zero out scale.</li>
                     </ol>
@@ -252,7 +252,7 @@
                 </div>
                 <ol class="{showPrepSteps === true ? '' : 'hidden'}">
                     <li>Set the temperature of your kettle to {recipe.waterTempC}&#176;C / {Math.round(recipe.waterTempC * 1.8 + 32)}&#176;F.</li>
-                    <li>Grind {recipe.coffeeWeightGrams}g of coffee to {recipe.grindSizeMicrons} microns.</li>
+                    <li>Grind {recipe.coffeeWeightGrams}g of coffee to {getGrindSize(recipe.grind)} [<a class="link link-primary" href="/brewing#grind">?</a>].</li>
                     <li>Add ground coffee to Aeropress.</li>
                     <li>Zero out scale.</li>
                 </ol>   

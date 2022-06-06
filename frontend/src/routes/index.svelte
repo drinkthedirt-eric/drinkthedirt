@@ -40,7 +40,7 @@
 
 <div class="font-bold text-4xl">DRINK THE DIRT</div>
 <div class="font-medium text-2xl pb-4">single servings of really special coffees</div>
-<div>Get single servings of three coffees we love, with notes and recipes to brew it perfectly at home.</div>
+<div>Don't miss out on seasonal, special coffees. Each month we curate three of our favorite rare coffees and pack them into six 15g single servings for you. We provide recipes so you can brew it perfectly at home.</div>
 <br/>
 <div><a class="link link-primary" href="mailto:hello@drinkthedirt.coffee">Sign up for the next delivery!</a></div>
 <br/>
