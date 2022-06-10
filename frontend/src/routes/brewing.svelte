@@ -24,7 +24,7 @@ import EmailUsLink from "$lib/links/email_us_link.svelte";
         <tr>
             <th>Grind Size</th>
             <th>Looks Like</th>
-            <th>Ode + SSP</th>
+            <th>Fellow Ode + SSP MP burrs</th>
         </tr>
     </thead>
     <tr>

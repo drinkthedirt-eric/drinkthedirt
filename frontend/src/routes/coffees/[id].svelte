@@ -57,6 +57,7 @@
                     coffeeWeightGrams
                     waterWeightGrams
                     grind                    
+                    grind_odessp
                     waterTempC
                     steps
                 }
@@ -115,11 +116,6 @@
             <div class="my-0 col-span-2 md:col-span-1">
                 <Carousel carouselId="hello" imageUrls={getImageUrls($coffeeResult.data.coffee.photos)}/>
             </div>
-            <div class="mt-2 col-span-2 grid place-items-center md:hidden">
-                <button class="btn bg-primary" on:click={goToRecipe}>
-                    Jump to Recipe!
-                </button>
-            </div>
             <div class="mt-2 col-span-2 md:col-span-1 md:mt-0 md:pl-8">
                 {#if $coffeeResult.data.coffee.isFavorite}
                     <div class="text-sm font-semibold leading-none text-white bg-indigo-600 p-2 border-round faveBadge mb-2">
@@ -136,48 +132,19 @@
                     <span>${$coffeeResult.data.coffee.price.toFixed(2)}</span>
                     <span class="font-extralight">- {getPriceWeightDisplay($coffeeResult.data.coffee)}</span>
                 </div>
-                <CoffeeProperty type="origin"
-                    >{$coffeeResult.data.coffee.location}, {$coffeeResult.data.coffee.country}</CoffeeProperty
-                >
-                <CoffeeProperty type="producer"
-                    >{$coffeeResult.data.coffee.producer}</CoffeeProperty
-                >
-                <CoffeeProperty type="process">{$coffeeResult.data.coffee.process}</CoffeeProperty>
-                <CoffeeProperty type="varietal"
-                    >{$coffeeResult.data.coffee.varietals.join(", ")}</CoffeeProperty
-                >
-                <CoffeeProperty type="from the roaster">
-                    <div>{$coffeeResult.data.coffee.roasterTastingNotes.join(", ")}</div>
-                    <div class="mt-2">{$coffeeResult.data.coffee.roasterDescription}</div>
-                </CoffeeProperty>
-            </div>
-        </div>
-        <div class="mt-2 hidden md:flex justify-center items-center">
-            <button class="btn bg-primary" on:click={goToRecipe}>
-                Jump to Recipe!
-            </button>
-        </div>
-        <div class="divider"/>
-        <div class="w-full text-2xl">from drink the dirt</div>
-        <div class="grid grid-cols-4 gap-1 mt-4">
-            <div class="col-span-4 md:col-span-3">
+
+                <CoffeeProperty type="flavor category">{$coffeeResult.data.coffee.flavorCategories.map(x => getCategory(x)).join(", ")}</CoffeeProperty>
+                <div class="flex flex-row gap-x-4">
+                    <CoffeeProperty type="sweetness">{$coffeeResult.data.coffee.sweetness}</CoffeeProperty>
+                    <CoffeeProperty type="acidity">{$coffeeResult.data.coffee.acidity}</CoffeeProperty>
+                    <CoffeeProperty type="body">{$coffeeResult.data.coffee.body}</CoffeeProperty>
+                </div>
                 <CoffeeProperty type="our review">{$coffeeResult.data.coffee.ourReview}</CoffeeProperty>            
-                <CoffeeProperty type="our impressions">{$coffeeResult.data.coffee.ourTastingNotes.join(", ")}</CoffeeProperty>
-            </div>
-            <div class="col-span-4 md:col-span-1 md:order-first grow-0">
-                <div class="grid grid-cols-2">
-                    <div class="col-span-1 md:col-span-2">
-                        <CoffeeProperty type="flavor category">{$coffeeResult.data.coffee.flavorCategories.map(x => getCategory(x)).join(", ")}</CoffeeProperty>
-                        <CoffeeProperty type="sweetness">{$coffeeResult.data.coffee.sweetness}</CoffeeProperty>
-                    </div>
-                    <div class="col-span-1 md:col-span-2">
-                        <CoffeeProperty type="body">{$coffeeResult.data.coffee.body}</CoffeeProperty>
-                        <CoffeeProperty type="acidity">{$coffeeResult.data.coffee.acidity}</CoffeeProperty>
-                    </div>
-                </div>    
             </div>
         </div>
+
         <div class="divider"/>
+
         <div id="recipes" class="w-full text-2xl">recipes</div>
         <div class="mb-4">
             Dig into the why's of each recipe with our in-depth <a class="link link-primary" href="/brewing">recipe guide</a>. We'd love to help you get the most out of this recipe. Email us at <EmailUsLink /> to schedule a troubleshooting session!
@@ -193,8 +160,13 @@
                         <tr>
                         <tr class="border">
                             <td class="font-medium">Grind Size</td>
-                            <td>{getGrindSize(recipe.grind)} [<a class="link link-primary" href="/brewing#grind">?</a>]</td>
+                            <td>
+                                {getGrindSize(recipe.grind)} [<a class="link link-primary" href="/brewing#grind">?</a>]
+                            </td>
                         <tr>
+                        <tr class="border">
+                            <td>Fellow Ode + SSP MP burrs</td>
+                            <td>{recipe.grind_odessp}</td>
                         <tr class="border">
                             <td class="font-medium">Water Weight</td>
                             <td>{recipe.waterWeightGrams}g</td>
@@ -268,6 +240,30 @@
                 {/if}                     
             {/if}        
         {/each}
+
+        <div class="divider"/>
+
+        <div class="w-full text-2xl">from the roaster</div>
+        <div class="grid grid-cols-2">
+            <div class="col-span-2 sm:col-span-1">
+                <CoffeeProperty type="origin">
+                    {$coffeeResult.data.coffee.location}, {$coffeeResult.data.coffee.country}
+                </CoffeeProperty>
+                <CoffeeProperty type="producer">
+                    {$coffeeResult.data.coffee.producer}
+                </CoffeeProperty>
+            </div>
+            <div class="col-span-2 sm:col-span-1">
+                <CoffeeProperty type="process">{$coffeeResult.data.coffee.process}</CoffeeProperty>
+                <CoffeeProperty type="varietal">
+                    {$coffeeResult.data.coffee.varietals.join(", ")}
+                </CoffeeProperty>
+            </div>
+        </div>
+        <CoffeeProperty type="from the roaster">
+            <div>{$coffeeResult.data.coffee.roasterTastingNotes.join(", ")}</div>
+            <div class="mt-2">{$coffeeResult.data.coffee.roasterDescription}</div>
+        </CoffeeProperty>
     </div>
 {/if}
 
