@@ -88,8 +88,8 @@
                                     </div>
                                     <div class="flex flex-row gap-x-4">
                                         <CoffeePropertyCard type="sweetness">{coffee.sweetness}</CoffeePropertyCard>
-                                        <CoffeePropertyCard type="body">{coffee.body}</CoffeePropertyCard>
                                         <CoffeePropertyCard type="acidity">{coffee.acidity}</CoffeePropertyCard>
+                                        <CoffeePropertyCard type="body">{coffee.body}</CoffeePropertyCard>
                                     </div>
                                 </div>                            
                             </div>
